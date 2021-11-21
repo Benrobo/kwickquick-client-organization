@@ -7,6 +7,7 @@
     <title>KwickQuick</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
     <header class="header">
@@ -58,7 +59,7 @@
       </nav>
 
       <div class="header-ovl p-3">
-        <div class="left">
+        <div class="left" data-aos="fade-right">
             <p class="brand">KwickQuick</p>
             <h1 class="display-4 heading">
               Tired Of The Queue?
@@ -68,7 +69,7 @@
             </h3>
         </div>
         <div class="right">
-          <img src="./assets/img/illus/q2.png" alt="" class="img-fluid">
+          <img src="./assets/img/illus/q2.png" alt="" class="img-fluid" data-aos="fade-left">
         </div>
       </div>
     </header>
@@ -76,11 +77,11 @@
     <section class="section">
       <!-- Features -->
       <div class="features">
-        <div class="top-head">
+        <div class="top-head" data-aos="fade-up">
           <h2>Made For Shoppers</h2>
           <p>Eradicate queue standing using kwickquick</p>
         </div>
-        <div class="f-body p-3">
+        <div class="f-body p-3" data-aos="fade-left">
           <div class="f-card">
             <div class="head">
               <ion-icon name="flash-outline"></ion-icon>
@@ -112,11 +113,11 @@
       </div>
       <!-- How it work -->
       <div class="how-cont">
-        <div class="top-head">
+        <div class="top-head" data-aos="fade-bottom">
           <h2>How Does It Work </h2>
           <p>You're only a few simple steps away</p>
         </div>
-        <div class="body">
+        <div class="body" data-aos="fade-up">
           <div class="how-card">
             <div class="top-head">
               <ion-icon name="business-outline"></ion-icon>
@@ -193,5 +194,11 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200
+      });
+    </script>
   </body>
 </html>

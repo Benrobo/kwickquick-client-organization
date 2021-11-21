@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="./assets/css/auth.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- back arrow -->
+    <div class="back-page">
+      <a href="/">
+        <ion-icon name="arrow-back" class="back-arrow"></ion-icon>
+      </a>
+    </div>
+
+    <div class="main-cont">
+      <form class="form-container">
+        <div class="top">
+          <img
+            src="./assets/img/logo/logo.png"
+            width="90"
+            alt=""
+            class="img-fluid"
+          />
+          <h5>Start Your Free trial today</h5>
+        </div>
+        <div class="main">
+          <input
+            type="text"
+            placeholder="Organization Name"
+            class="form-control org-name"
+            required
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            class="form-control org-email"
+            required
+            required
+          />
+          <input
+            type="number"
+            placeholder="Mobile Number"
+            class="form-control org-number"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Pasword"
+            class="form-control org-pwd"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirm Pasword"
+            class="form-control org-confirm-pwd"
+            required
+          />
+
+          <div class="controls">
+            <button class="btn submit-btn">Signup</button>
+
+            <small> Have a kwickquick account ? <a href="login.html">login</a> </small>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200,
+      });
+    </script>
+  </body>
+</html>

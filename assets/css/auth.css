@@ -1,0 +1,102 @@
+@import url("./style.css");
+
+
+
+.back-page{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 20px;
+    color: var(--y);
+}
+
+.back-page ion-icon{
+    font-size: 30px;
+    color: var(--y);
+}
+
+.main-cont{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container{
+    width: 500px;
+    padding: 12px;
+
+}
+
+.form-container .top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    color: var(--light);
+}
+
+.form-container .flex{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.form-container input,
+.form-container .btn{
+    margin-top: 20px;
+    
+}
+
+.form-container input{
+    background: var(--dark3);
+    outline: none;
+    border:none;
+    border: 2px solid var(--y);
+    padding: 12px
+}
+
+.form-container input:focus{
+    background: var(--dark3);
+    color: var(--light);
+    border: 2px solid var(--y);
+    outline: none
+}
+
+.form-container .main{
+    background: ;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: column;
+}
+
+.form-container .main .controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    color: var(--light);
+}
+
+.form-container .main .controls a{
+    color: var(--y);
+}
+
+.form-container .main .controls .btn{
+    width: 30%;
+    background: var(--y);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+@media(max-width:400px){
+    .form-container{
+        width: 350px;
+    }
+}

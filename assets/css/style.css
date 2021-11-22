@@ -495,9 +495,6 @@ body {
   .burger-cont {
     display: flex;
   }
-  .section .features {
-    /* background: red; */
-  }
   .section .features .top-head h2 {
     font-size: 20px;
     flex-wrap: wrap;

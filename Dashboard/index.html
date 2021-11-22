@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- sidebar -->
+
+    <div class="sidebar">
+      <!-- <div class="navbar-container"> -->
+        <div class="top">
+          <img src="../assets/img/logo/logo.png" alt="" class="img-fluid" />
+          <h6>Kwickquick</h6>
+        </div>
+        <div class="main-nav">
+          <ul class="list-item">
+            <li class="active">
+              <a href="">Dashboard</a>
+            </li>
+            <li>
+              <a href="">Add Product</a>
+            </li>
+            <li>
+              <a href="">Generate QRCODE</a>
+            </li>
+            <li>
+              <a href="">Print QRCODES</a>
+            </li>
+            <li>
+              <a href="">Settings / Profile</a>
+            </li>
+          </ul>
+        </div>
+      <!-- </div> -->
+    </div>
+    <!-- main-content -->
+    <div class="main-content">
+      <!-- navbar -->
+      <div class="dash-nav">
+        <div class="right">
+          <img src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg" alt="" class="img-fluid">
+          <div class="info">
+            <span><b>Tesla Motor</b></span>
+            <small>Chief Manager</small>
+          </div>
+          <div class="drop-down-cont">
+            <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
+            <div class="dropdown-content">
+              <ul>
+                <li>
+                  <a href="">Logout</a>
+                </li>
+                <li>
+                  <a href="">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- top head -->
+      <div class="top-head">
+        <p>Dashboard</p>
+        <div class="top-cards-cont">
+          <div class="info-card">
+            <div class="left">
+              <ion-icon name="cart"></ion-icon>
+            </div>
+            <div class="right">
+              <h5 class="total-product-price">$2,555,84</h5>
+              <small>Total Products</small>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="left">
+              <ion-icon name="qr-code"></ion-icon>
+            </div>
+            <div class="right">
+              <h5 class="total-product-price">100</h5>
+              <small>Total Scanned Products</small>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="left">
+              <ion-icon name="pricetags"></ion-icon>
+            </div>
+            <div class="right">
+              <h5 class="total-product-price">1.2k</h5>
+              <small>Total Products</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSACTIONS INFO -->
+      <div class="transaction-info-cont">
+        <!-- purchase cont -->
+        <div class="purchase-container">
+          <div class="head">
+            <h3>Purchase Info</h3>
+          </div>
+          <table class="table-cont">
+            <thead>
+              <th>Customer</th>
+              <th>OrderId</th>
+              <th>Total</th>
+              <th>Payment</th>
+              <th>Date</th>
+              <th>Details</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>James Brain</td>
+                <td class="order-id">Or-19Yu5i</td>
+                <td>$10,250</td>
+                <td class="payment">Master Card</td>
+                <td>Wed 4, 2021</td>
+                <td>
+                  <button class="btn more-info">Details</button>
+                </td>
+              </tr>
+              <tr>
+                <td>James Brain</td>
+                <td class="order-id">Or-19Yu5i</td>
+                <td>$10,250</td>
+                <td class="payment">Master Card</td>
+                <td>Wed 4, 2021</td>
+                <td>
+                  <button class="btn more-info">Details</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+
+
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Add Products</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- sidebar -->
+
+    <div class="sidebar">
+      <!-- <div class="navbar-container"> -->
+      <div class="top">
+        <img src="../assets/img/logo/logo.png" alt="" class="img-fluid" />
+        <h6>Kwickquick</h6>
+      </div>
+      <div class="main-nav">
+        <ul class="list-item">
+          <a href="index.html">
+            <li class="">Dashboard</li>
+          </a>
+          <a href="./addProducts.html">
+            <li class="active">Add Product</li>
+          </a>
+          <a href="">
+            <li class="">Generate QRCODE</li>
+          </a>
+          <a href="">
+            <li class="">Print QRCODES</li>
+          </a>
+          <a href="">
+            <li class="">Settings / Profile</li>
+          </a>
+        </ul>
+      </div>
+      <!-- </div> -->
+    </div>
+    <!-- main-content -->
+    <div class="main-content">
+      <!-- navbar -->
+      <div class="dash-nav">
+        <div class="right">
+          <img
+            src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
+            alt=""
+            class="img-fluid"
+          />
+          <div class="info">
+            <span><b>Tesla Motor</b></span>
+            <small>Chief Manager</small>
+          </div>
+          <div class="drop-down-cont">
+            <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
+            <div class="dropdown-content">
+              <ul>
+                <li>
+                  <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST FORM -->
+      <div class="post-form-cont">
+        <div class="left">
+          <div class="head">
+            <h5>Add Item</h5>
+          </div>
+          <div class="form-cont">
+            <input type="text" placeholder="Name" class="form-control pName" />
+
+            <input
+              type="number"
+              placeholder="Price"
+              class="form-control pPrice"
+            />
+            <select class="form-control currencies">
+            </select>
+
+            <input
+              type="number"
+              placeholder="Number"
+              class="form-control pNumber"
+            />
+          </div>
+        </div>
+        <div class="right">
+          <button class="btn upload">
+            <ion-icon name="cloud-upload-outline"></ion-icon>
+            Choose File
+          </button>
+          <input type="file" hidden class="imageInp" />
+          <div class="image-preview">
+            <img alt="" class="img-fluid product-image-preview" />
+          </div>
+          <button class="btn submit-btn brand-btn-o">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script language="javascript" src="./js/lz-string.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+      NavBarDropDown();
+      ADD_PRODUCTS()
+    </script>
+  </body>
+</html>

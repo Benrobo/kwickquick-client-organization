@@ -13,29 +13,29 @@
 
     <div class="sidebar">
       <!-- <div class="navbar-container"> -->
-        <div class="top">
-          <img src="../assets/img/logo/logo.png" alt="" class="img-fluid" />
-          <h6>Kwickquick</h6>
-        </div>
-        <div class="main-nav">
-          <ul class="list-item">
-            <li class="active">
-              <a href="">Dashboard</a>
-            </li>
-            <li>
-              <a href="">Add Product</a>
-            </li>
-            <li>
-              <a href="">Generate QRCODE</a>
-            </li>
-            <li>
-              <a href="">Print QRCODES</a>
-            </li>
-            <li>
-              <a href="">Settings / Profile</a>
-            </li>
-          </ul>
-        </div>
+      <div class="top">
+        <img src="../assets/img/logo/logo.png" alt="" class="img-fluid" />
+        <h6>Kwickquick</h6>
+      </div>
+      <div class="main-nav">
+        <ul class="list-item">
+          <li class="active">
+            <a href="">Dashboard</a>
+          </li>
+          <li>
+            <a href="">Add Product</a>
+          </li>
+          <li>
+            <a href="">Generate QRCODE</a>
+          </li>
+          <li>
+            <a href="">Print QRCODES</a>
+          </li>
+          <li>
+            <a href="">Settings / Profile</a>
+          </li>
+        </ul>
+      </div>
       <!-- </div> -->
     </div>
     <!-- main-content -->
@@ -43,7 +43,11 @@
       <!-- navbar -->
       <div class="dash-nav">
         <div class="right">
-          <img src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg" alt="" class="img-fluid">
+          <img
+            src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
+            alt=""
+            class="img-fluid"
+          />
           <div class="info">
             <span><b>Tesla Motor</b></span>
             <small>Chief Manager</small>
@@ -53,10 +57,7 @@
             <div class="dropdown-content">
               <ul>
                 <li>
-                  <a href="">Logout</a>
-                </li>
-                <li>
-                  <a href="">Logout</a>
+                  <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
                 </li>
               </ul>
             </div>
@@ -107,7 +108,7 @@
           <table class="table-cont">
             <thead>
               <th>Customer</th>
-              <th>OrderId</th>
+              <th>PurchaseId</th>
               <th>Total</th>
               <th>Payment</th>
               <th>Date</th>
@@ -121,7 +122,7 @@
                 <td class="payment">Master Card</td>
                 <td>Wed 4, 2021</td>
                 <td>
-                  <button class="btn more-info">Details</button>
+                  <button class="btn more-info products-details-btn">Details</button>
                 </td>
               </tr>
               <tr>
@@ -131,17 +132,41 @@
                 <td class="payment">Master Card</td>
                 <td>Wed 4, 2021</td>
                 <td>
-                  <button class="btn more-info">Details</button>
+                  <button class="btn more-info products-details-btn" data-product-id="productid">Details</button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        
+      </div>
+
+      <!-- Products Info -->
+      <div class="products-info-modal">
+        <div class="products-info">
+          <ion-icon name="close" class="close-products-modal"></ion-icon>
+          <div class="top-head">
+            <img src="https://avatars.dicebear.com/api/micah/john%20brains.svg" alt="" class="img-fluid" />
+            <div class="user-details">
+              <h4>John Brains</h4>
+              <span class="type">Customer</span>
+            </div>
+          </div>
+          <div class="middle">
+            <p>Purchased Products</p>
+          <hr />
+          </div>
+          <div class="purchase-products">
+            <div class="purchase-card">
+              <img src="./img/products/milk.png" alt="" class="img-fluid" />
+              <div class="info">
+                <p class="name"><span class="qty">Item Name: </span>Milk</p>
+                <span class="qty">Quantity: <span class="qty-num">3</span> </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-
 
     <script
       type="module"
@@ -152,5 +177,11 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="./js/main.js"></script>
+    <script>
+      NavBarDropDown()
+      ProductsDetails()
+    </script>
   </body>
 </html>

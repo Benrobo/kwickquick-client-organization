@@ -1,7 +1,7 @@
 ### Kwickquick-Client
 
 
-You can view the [kwickquick-API](https://github.com/Benrobo/kickquick-API)
+You can view the [kwickquick-API](https://github.com/Benrobo/kwickquick-API)
 
 
 ## ❤❤ Contributing

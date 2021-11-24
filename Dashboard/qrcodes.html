@@ -79,7 +79,7 @@
       </div>
 
       <div class="qrcode-main-container">
-        <table class="">
+        <table class="qrcode-table">
           <thead>
             <th>
               <input type="checkbox" class="delete-all" />
@@ -90,7 +90,7 @@
             <th>Created Date</th>
             <th>Details</th>
           </thead>
-          <tbody>
+          <tbody class="qrcode-table-body">
             <tr>
               <td><input type="checkbox" class="delete-all" /></td>
               <td>
@@ -112,7 +112,33 @@
                 <span>04.25.022</span>
               </td>
               <td>
-                <button class="btn details">Details</button>
+                <button class="btn details qrcode-info-btn" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="bread" data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="45">Details</button>
+
+                <a class="button" href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="delete-all" /></td>
+              <td>
+                <div class="info">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=benrobo%20is%20awesome" alt="" />
+                  <div class="text">
+                    <span><b>Milk</b></span>
+                    <span class="price">$19</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="orgId">fgv0e79ji45ty90</span>
+              </td>
+              <td>
+                <span class="orgId">787v0e79ji45ty90</span>
+              </td>
+              <td>
+                <span>04.25.022</span>
+              </td>
+              <td>
+                <button class="btn details qrcode-info-btn" data-qrcode-img="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=benrobo%20is%20awesome" data-qrcode-item="milk" data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="45">Details</button>
               </td>
             </tr>
           </tbody>
@@ -121,8 +147,9 @@
 
       <!-- right sidebar -->
       <div class="qrcode-sidebar">
-          <div class="main">
-            <ion-icon name="close-outline" class="close-btn"></ion-icon>
+        <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
+          <div class="main main-qrcode-cont mt-5">
+            <!-- <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
               <div class="top">
                   <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=benrobo%20is%20awesome" alt="" class="img-fluid">
                   <button class="download btn">Download</button>
@@ -134,8 +161,8 @@
                   <span>scdf45364tgfr5e4ty4567</span>
                   <p><b>Price</b></p>
                   <span>23</span>
-              </div>
-          </div>
+              </div> -->
+          </div> 
       </div>
     </div>
 
@@ -151,7 +178,19 @@
     <script src="./js/main.js"></script>
     <script>
       NavBarDropDown();
-      ADD_PRODUCTS();
+      QRCODE_PAGE();
+
+      let img = document.querySelector(".test-img");
+
+      // img.onclick = (e)=>{
+      //   e.preventDefault()
+      //   let a = document.createElement("a");
+      //   a.href = "https://qrtag.net/api/qr_4.png"
+      //   a.download = true;
+      //   a.onclick = (e)=>{
+      //     e.preventDefault()
+      //   }
+      // }
     </script>
   </body>
 </html>

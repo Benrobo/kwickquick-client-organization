@@ -72,9 +72,16 @@ const ADD_PRODUCTS = async () => {
     let imgPreview = $(".product-image-preview");
     let submitBtn = $(".submit-btn");
     let base64Image = "";
-    let qrcodeBox = $(".qrcode-main");
+    let qrcodeBox = $(".qrcode-image");
     let qrcodeBtn = $(".qrcode-icon")
     let loading = false;
+    let qrcodeImageModal = $(".qrcode-main-modal")
+    let closeQrcodeModal = $(".close-qrcode-modal")
+
+    // close modal
+    closeQrcodeModal.onclick = ()=>{
+        qrcodeImageModal.style.visibility = "hidden"
+    }
 
     // fill the select tag with all currencies
     let req = await fetch("js/currency.json");
@@ -156,9 +163,18 @@ const ADD_PRODUCTS = async () => {
                 loading = false;
                 submitBtn.innerHTML = "Submit"
                 submitBtn.classList.remove("loading")
-                qrcodeBox.innerHTML = `
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${result.productId}" />
-            `
+                // qrcodeBox.innerHTML = `
+                //     <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${result.productId}" />
+                // `
+                qrcodeBox.innerHTML = ""
+                new QRCode(qrcodeBox, {
+                    text: result.productId,
+                    width: 320,
+                    height: 320,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
             }
         } catch (e) {
             return alert.error("Something went wrong")
@@ -167,14 +183,93 @@ const ADD_PRODUCTS = async () => {
     }
 
     qrcodeBtn.onclick = () => {
-        qrcodeBox.classList.toggle("visibility")
+        qrcodeImageModal.style.visibility = "visible"
     }
 }
 
 
 
 // QRCODE PAGE CONT
+const QRCODE_PAGE = () => {
+    let downloadBtn = $(".download-btn");
+    let deleteBtn = $(".delete-btn");
+    let qrcodeSidebar = $('.qrcode-sidebar');
+    let mainQrcodeCont = $(".main-qrcode-cont")
+    let qrcodeTableBody = $(".qrcode-table-body");
+    let qrcodeDetailsBtn = $all(".qrcode-info-btn");
+    let closeSidebar = $(".close-qrcode-btn")
+
+    // check if the details btn length is> 1
+    mainQrcodeCont.innerHTML = ""
+
+    // close sidebar
+    closeSidebar.onclick = () => {
+        qrcodeSidebar.style.width = "0px"
+    }
+
+    
 
 
+    if (qrcodeDetailsBtn.length > 1) {
+        qrcodeDetailsBtn.forEach(btn => {
+            btn.onclick = (e) => {
+                // open up the sidebar
+                qrcodeSidebar.style.width = "250px"
+
+                let target = e.target;
+
+                let img = target.getAttribute("data-qrcode-img")
+                let hash = target.getAttribute("data-qrcode-hash")
+                let itemName = target.getAttribute("data-qrcode-item")
+                let orgId = target.getAttribute("data-qrcode-orgId")
+                let price = target.getAttribute("data-qrcode-price")
 
 
+                mainQrcodeCont.innerHTML = `
+                  <div class="top">
+                      <img src="${img}" alt="qrcode" class="img-fluid">
+                      <a class="download btn" href="${img}" download="true">Download</a>
+                  </div>
+                  <div class="body">
+                      <p><b>Name:</b></p>
+                      <span>${itemName}</span>
+                      <p><b>Hash:</b></p>
+                      <span>${hash}</span>
+                      <p><b>Price</b></p>
+                      <span>${price}</span>
+                  </div>
+                `
+            }
+        })
+        // return
+    }
+    qrcodeDetailsBtn[0].onclick = (e) => {
+        // open up the sidebar
+        qrcodeSidebar.style.width = "250px"
+
+        let target = e.target;
+
+        let img = target.getAttribute("data-qrcode-img")
+        let hash = target.getAttribute("data-qrcode-hash")
+        let itemName = target.getAttribute("data-qrcode-item")
+        let orgId = target.getAttribute("data-qrcode-orgId")
+        let price = target.getAttribute("data-qrcode-price")
+
+        mainQrcodeCont.innerHTML = `
+                  <div class="top">
+                      <img src="${img}" alt="qrcode" class="img-fluid">
+                      <a class="download btn" onclick="javacript:void()" href="javacript:void(${img})" download="true">Download</a>
+                  </div>
+                  <div class="body">
+                      <p><b>Name:</b></p>
+                      <span>${itemName}</span>
+                      <p><b>Hash:</b></p>
+                      <span>${hash}</span>
+                      <p><b>Price</b></p>
+                      <span>${price}</span>
+                  </div>
+                `
+    }
+
+
+}

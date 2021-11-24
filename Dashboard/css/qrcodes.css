@@ -142,15 +142,17 @@
     overflow: hidden;
 }
 
+
+
 .qrcode-sidebar .close-btn{
-    color: red;
+  color: red;
   padding: 10px;
   border-radius: 50%;
   transform: scale(0.85);
   transition: 0.2s ease;
   cursor: pointer;
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 10px;
   background: rgba(255, 0, 0, 0.286);
 }

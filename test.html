@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <div id="qrcode"></div>
+
+    <canvas class="can"></canvas>
+    <script src="./canvasto.js"></script>
+    <script src="./qr.js"></script>
+    <script>
+      var qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: "http://jindo.dev.naver.com/collie",
+	width: 250,
+	height: 250,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.M
+});
+
+    </script>
+  </body>
+</html>

@@ -97,8 +97,11 @@
       <!-- qrcode container -->
       <div class="qrcode-container">
         <ion-icon name="qr-code" class="qrcode-icon"></ion-icon>
-        <div class="qrcode-main">
-          <span>Product qrcode would be avialable after been added.</span>
+      </div>
+      <div class="qrcode-main-modal">
+        <ion-icon name="close-outline" class="close-qrcode-modal"></ion-icon>
+        <div class="qrcode-image">
+          <span>Product qrcode would appear here when added successfully.</span>
         </div>
       </div>
     </div>
@@ -113,9 +116,11 @@
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/qr.js"></script>
     <script>
       NavBarDropDown();
       ADD_PRODUCTS();
+
     </script>
   </body>
 </html>

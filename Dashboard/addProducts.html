@@ -7,6 +7,8 @@
     <title>Dashboard | Add Products</title>
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/sweetalert.js"></script>
+    <link rel="stylesheet" href="./css/sweetalert.css">
   </head>
   <body>
     <!-- sidebar -->
@@ -24,9 +26,6 @@
           </a>
           <a href="./addProducts.html">
             <li class="active">Add Product</li>
-          </a>
-          <a href="">
-            <li class="">Generate QRCODE</li>
           </a>
           <a href="">
             <li class="">Print QRCODES</li>
@@ -79,14 +78,7 @@
               placeholder="Price"
               class="form-control pPrice"
             />
-            <select class="form-control currencies">
-            </select>
-
-            <input
-              type="number"
-              placeholder="Number"
-              class="form-control pNumber"
-            />
+            <select class="form-control currencies"></select>
           </div>
         </div>
         <div class="right">
@@ -101,6 +93,14 @@
           <button class="btn submit-btn brand-btn-o">Submit</button>
         </div>
       </div>
+
+      <!-- qrcode container -->
+      <div class="qrcode-container">
+        <ion-icon name="qr-code" class="qrcode-icon"></ion-icon>
+        <div class="qrcode-main">
+          <span>Product qrcode would be avialable after been added.</span>
+        </div>
+      </div>
     </div>
 
     <script
@@ -112,12 +112,10 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script language="javascript" src="./js/lz-string.js"></script>
     <script src="./js/main.js"></script>
     <script>
       NavBarDropDown();
-      ADD_PRODUCTS()
+      ADD_PRODUCTS();
     </script>
   </body>
 </html>

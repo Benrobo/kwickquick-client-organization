@@ -10,6 +10,29 @@ const $all = (elm) => {
     return document.querySelectorAll(elm)
 }
 
+
+function Alert() {
+    this.success = (text) => {
+        return Swal.fire({
+            title: 'Success!',
+            text: text,
+            icon: 'success',
+            confirmButtonText: 'Cool'
+        })
+    }
+
+    this.error = (text) => {
+        return Swal.fire({
+            title: 'Failure!',
+            text: text,
+            icon: 'error',
+            confirmButtonText: 'Try again later'
+        })
+    }
+}
+
+let alert = new Alert()
+
 const NavBarDropDown = () => {
     let dropdowncont = $(".dropdown-content");
     let dropdownicon = $(".dropdown-icon");
@@ -43,14 +66,15 @@ const ProductsDetails = () => {
 const ADD_PRODUCTS = async () => {
     let nameInp = $(".pName")
     let priceInp = $(".pPrice")
-    let pNumber = $(".pNumber");
     let currencyInp = $(".currencies");
     let uploadBtn = $(".upload")
     let file = $(".imageInp");
     let imgPreview = $(".product-image-preview");
     let submitBtn = $(".submit-btn");
-
     let base64Image = "";
+    let qrcodeBox = $(".qrcode-main");
+    let qrcodeBtn = $(".qrcode-icon")
+    let loading = false;
 
     // fill the select tag with all currencies
     let req = await fetch("js/currency.json");
@@ -85,17 +109,17 @@ const ADD_PRODUCTS = async () => {
         };
     }
 
-    submitBtn.onclick = async (e)=>{
-        if(base64Image === ""){
-            alert("Product image is empty");
+    submitBtn.onclick = async (e) => {
+        if (base64Image === "") {
+            alert.error("Product image is empty");
             return
         }
-        else if(nameInp.value === "" || priceInp.value === "" || pNumber.value === ""){
-            alert("fields cant be empty")
-            return 
+        else if (nameInp.value === "" || priceInp.value === "") {
+            alert.error("fields cant be empty")
+            return
         }
-        else{
-            
+        else {
+
             let senddata = {
                 pName: nameInp.value,
                 pPrice: priceInp.value,
@@ -107,21 +131,45 @@ const ADD_PRODUCTS = async () => {
         }
     }
 
-    const sendData = async (data)=>{
-        let req = await fetch("http://localhost:5000/kwickquick/api/addProducts", {
-            method: "post",
-            headers:{
-                "content-type": "application/json",
-                "authorization": `Bearer`
-            },
-            body: JSON.stringify(data)
-        })
-        let res = await req;
+    const sendData = async (data) => {
+        try {
+            loading = true;
+            submitBtn.innerHTML = "Loading ....."
+            submitBtn.classList.add("loading")
+            let req = await fetch("http://localhost:5000/kwickquick/api/addProducts", {
+                method: "post",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": `Bearer`
+                },
+                body: JSON.stringify(data)
+            })
+            let result = await req.json();
 
-        console.log(res)
+            console.log(result)
+            if (result === "" || !result) {
+                qrcodeBox.innerHTML = "Product qrcode would be visible when products as been added."
+                return;
+            }
+            else if (req.status === 200) {
+                alert.success("Product added successfully")
+                loading = false;
+                submitBtn.innerHTML = "Submit"
+                submitBtn.classList.remove("loading")
+                qrcodeBox.innerHTML = `
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${result.productId}" />
+            `
+            }
+        } catch (e) {
+            return alert.error("Something went wrong")
+        }
+
+    }
+
+    qrcodeBtn.onclick = () => {
+        qrcodeBox.classList.toggle("visibility")
     }
 }
-
 
 
 

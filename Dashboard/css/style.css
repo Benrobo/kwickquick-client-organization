@@ -71,7 +71,7 @@ body {
 }
 
 .sidebar {
-  width: 220px;
+  width: 200px;
   height: 100%;
   position: fixed;
   top: 0px;
@@ -160,9 +160,9 @@ body {
 /* MAIN CONTENT */
 
 .main-content {
-  width: calc(100% - 220px);
+  width: calc(100% - 200px);
   position: relative;
-  left: 220px;
+  left: 200px;
   top: 0px;
   height: 100vh;
 }
@@ -585,7 +585,12 @@ body {
   color: var(--light);
   height: 50px;
   margin-top: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
+
 .post-form-cont .right {
   width: 100%;
   position: relative;
@@ -695,7 +700,7 @@ body {
 }
 
 .qrcode-container .qrcode-main img {
-  width: 60%;
+  width: 70%;
   padding: 10px;
 }
 

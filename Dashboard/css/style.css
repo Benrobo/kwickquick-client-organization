@@ -688,7 +688,7 @@ body {
   top: 0px;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, .9);
+  background: #fff;
   transition: .1s ease;
   visibility: hidden;
   display: flex;
@@ -703,8 +703,8 @@ body {
   top: 30px;
   right: 20px;
   padding: 10px;
-  background: rgb(255, 0, 0, .4);
-  color: red;
+  background: rgba(0, 0, 0, 0.4);
+  color: #000;
   font-size: 20px;
   border-radius: 50%;
   cursor: pointer;
@@ -713,7 +713,7 @@ body {
 .qrcode-main-modal .qrcode-image{
   width: 350px;
   height: 350px;
-  background: #ccc;
+  /* background: #ccc; */
   display: flex;
   align-items: center;
   justify-content: center;

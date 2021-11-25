@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Qrcodes Management</title>
     <link rel="stylesheet" href="./css/bootstrap.css" />
-    <link rel="stylesheet" href="./css/qrcodes.css" />
+    <link rel="stylesheet" href="./css/products.css" />
     <script src="./js/sweetalert.js"></script>
     <link rel="stylesheet" href="./css/sweetalert.css" />
   </head>
@@ -28,10 +28,10 @@
             <li class="">Add Product</li>
           </a>
           <a href="qrcodes.html">
-            <li class="active">Print QRCODES</li>
+            <li class="">Print QRCODES</li>
           </a>
           <a href="products.html">
-            <li class="">Manage Products</li>
+            <li class="active">Manage Products</li>
           </a>
           <a href="">
             <li class="">Settings / Profile</li>
@@ -67,70 +67,84 @@
         </div>
       </div>
 
-      <div class="qrcode-header-cont">
+      <div class="products-header-cont">
         <div class="left">
-          <ion-icon name="qr-code-outline" class="qrcode-icon"></ion-icon>
-            <h3 class="qrcodes-count">
-              115
-            </h3>
+          <input
+            type="text"
+            placeholder="Search"
+            class="search-form form-control"
+          />
         </div>
       </div>
 
-      <div class="qrcode-main-container">
-        <table class="qrcode-table">
+      <div class="products-main-container">
+        <table class="products-table">
           <thead>
-            <th>Product Info</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
             <th>OrganizationId</th>
-            <th>Qrcode Hash</th>
             <th>Created Date</th>
             <th>Details</th>
           </thead>
-          <tbody class="qrcode-table-body">
+          <tbody class="products-table-body">
             <tr>
+                <td>
+                    <img src="./img/products/milk.png" alt="" width="30" height="30" class="img-fluid">
+                </td>
+                <td>Milk</td>
+                <td>22</td>
+              <td>fgv0e79ji45ty90</td>
               <td>
-                <div class="info">
-                  <div class="text">
-                    <span><b>Milk</b></span>
-                    <span class="price">$19</span>
-                  </div>
-                </div>
+                <span class="orgId">22.44.02</span>
               </td>
               <td>
-                <span class="orgId">fgv0e79ji45ty90</span>
-              </td>
-              <td>
-                <span class="orgId">787v0e79ji45ty90</span>
-              </td>
-              <td>
-                <span>04.25.022</span>
-              </td>
-              <td>
-                <button class="btn details qrcode-info-btn" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="bread" data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="45">Details</button>
+                <button class="btn products-info-btn btn-success" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="bread" data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="45">Edit</button>
+
+                <button class="btn products-info-btn btn-danger"
+                data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436">Delete</button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- right sidebar -->
-      <div class="qrcode-sidebar">
-        <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
-          <div class="main main-qrcode-cont mt-5">
-            <!-- <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
-              <div class="top">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=benrobo%20is%20awesome" alt="" class="img-fluid">
-                  <button class="download btn">Download</button>
+      <div class="edit-product-modal">
+        <ion-icon name="close" class="close-modal"></ion-icon>
+        <div class="post-form-cont">
+            <div class="left">
+              <div class="head">
+                <h5>Edit Product</h5>
               </div>
-              <div class="body">
-                  <p><b>Name:</b></p>
-                  <span>Milk</span>
-                  <p><b>Hash:</b></p>
-                  <span>scdf45364tgfr5e4ty4567</span>
-                  <p><b>Price</b></p>
-                  <span>23</span>
-              </div> -->
-          </div> 
+              <div class="form-cont">
+                <input type="text" placeholder="Name" class="form-control pName" />
+    
+                <input
+                  type="number"
+                  placeholder="Price"
+                  class="form-control pPrice"
+                />
+                <select class="form-control currencies"></select>
+              </div>
+            </div>
+            <div class="right">
+                <div class="check-edit-img">
+                    <input type="checkbox" class="edit-image-chk">
+                    edit image
+                </div>
+              <button class="btn upload visible">
+                <ion-icon name="cloud-upload-outline" ></ion-icon>
+                Choose File
+              </button>
+              <input type="file" hidden class="imageInp" />
+              <div class="image-preview">
+                <img alt="" class="img-fluid product-image-preview" />
+              </div>
+              <button class="btn submit-btn brand-btn-o">Submit</button>
+            </div>
+          </div>
       </div>
+
     </div>
 
     <script
@@ -146,7 +160,7 @@
     <script src="./js/qr.js"></script>
     <script>
       NavBarDropDown();
-      QRCODE_PAGE();
+      PRODUCTS_PAGE()
     </script>
   </body>
 </html>

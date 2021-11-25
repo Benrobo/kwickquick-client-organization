@@ -1,6 +1,6 @@
 @import url("./style.css");
 
-.qrcode-header-cont{
+.products-header-cont{
     width: 100%;
     height: auto;
     padding: 20px;
@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.qrcode-header-cont .left{
+.products-header-cont .left{
     display: flex;
     color: #ccc;
     font-weight: 900;
@@ -22,7 +22,7 @@
 }
 
 
-.qrcode-header-cont .left .qrcodes-options{
+.products-header-cont .left .products-options{
     display: flex;
     color: #ccc;
     font-weight: 900;
@@ -34,12 +34,12 @@
     flex-direction: row;
     border-left: 2px solid var(--y);
 }
-.qrcode-header-cont .left .qrcodes-count{
+.products-header-cont .left .products-count{
     font-weight: 900;
     padding: 5px;
 
 }
-.qrcode-header-cont .left .qrcode-icon{
+.products-header-cont .left .qrcode-icon{
     padding: 10px;
     font-size: 25px;
     border-radius: 5px;
@@ -51,7 +51,7 @@
 } 
 
 
-.qrcode-header-cont .left ion-icon:focus{
+.products-header-cont .left ion-icon:focus{
     transform: scale(.85);
     transition: .2s ease;
 }
@@ -66,21 +66,21 @@
 
 /* QRCODE TABLE */
 
-.qrcode-main-container {
+.products-main-container {
     position: relative;
     opacity: 10px;
     padding: 10px;
     width: 100%;
     height: auto;
 }
-.qrcode-main-container table{
+.products-main-container table{
     color: #999898;
     border-top: none;
     width: 100%;
     height: auto;
 }
 
-.qrcode-main-container table thead th{
+.products-main-container table thead th{
     border-bottom: none;
     border-top: none;
     padding-bottom: 12px;
@@ -88,21 +88,21 @@
     padding-left: 12px;
 }
 
-.qrcode-main-container table tbody tr{
+.products-main-container table tbody tr{
     background: var(--dark2);
     width: 100%;
     border-radius: 6px;
 }
-.qrcode-main-container table tbody tr:hover{
+.products-main-container table tbody tr:hover{
     background: var(--dark3);
 
 }
 
-.qrcode-main-container table tbody tr td{
+.products-main-container table tbody tr td{
     padding: 10px;
     
 }
-.qrcode-main-container table tbody tr td .info{
+.products-main-container table tbody tr td .info{
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -116,97 +116,67 @@
     color: #ccc;
 }
 
-.qrcode-main-container table tbody tr td .details{
+.products-main-container table tbody tr td .products-info-btn{
     transform: scale(.75);
-    background: var(--light2);
     font-weight: 900;
     visibility: hidden;
 } 
 
-.qrcode-main-container table tbody tr:hover > td .details{
+.products-main-container table tbody tr:hover > td .products-info-btn{
     visibility: visible;
 }
 
-
-/* qrcode sidebar */
-.qrcode-sidebar{
-    position: fixed;
-    right: 0px;
-    top: 0px;
-    width: 0px;
+.edit-product-modal{
+    width: 100%;
     height: 100vh;
-    background: var(--dark2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 0px;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px #000;
-}
-
-
-
-.qrcode-sidebar .close-btn{
-  color: red;
-  padding: 10px;
-  border-radius: 50%;
-  transform: scale(0.85);
-  transition: 0.2s ease;
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 10px;
-  background: rgba(255, 0, 0, 0.286);
-}
-
-.qrcode-sidebar .top{
-    padding: 20px;
-    position: relative;
-    top: 20px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    background: #fff;
-    width: 100%;
+    background: #000;
+    /* display: none; */
 }
 
-.qrcode-sidebar .top .qrcode-img-cont{
-    margin-bottom: 10px;
-    width: 200px;
-    height: 200px;
-}
-.qrcode-sidebar .top .action ion-icon{
-    transform: scale(.75);
+.edit-product-modal .close-modal{
+    position: absolute;
+    top: 20px;
+    right: 20px;
     padding: 10px;
-    font-size: 25px;
-    border-radius: 5px;
+    font-size: 20px;
+    color: red;
+    background: rgba(255,0,0,.4);
+    border-radius: 50%;
+    transition: .2s ease;
+    transform: scale(.75);
     cursor: pointer;
-    transition: .2s ease;
-}
-.qrcode-sidebar .top .action ion-icon:hover{
-    transform: scale(.95);
-    transition: .2s ease;
-
 }
 
-.qrcode-sidebar .body{
-    color: var(--light2);
+.edit-product-modal .close-modal:hover{
+    transition: .2s ease;
+    transform: scale(.85);
+}
+
+.edit-product-modal .post-form-cont{
+    width: 50% !important;
+    margin: 20px auto;
     position: relative;
-    top: 30px;
+    left: 50px;
 }
-.qrcode-sidebar .body p{
-    font-size: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 0px;
+.edit-product-modal .post-form-cont .right .check-edit-img{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #fff;
+    padding: 10px;
 }
-.qrcode-sidebar .body span{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 10px;
-    font-size: 14px;
+.edit-product-modal .post-form-cont .right .upload.visible{
+    display: none;
 }
+
+
+
+
 
 

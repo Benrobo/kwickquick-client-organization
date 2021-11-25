@@ -1,61 +1,26 @@
 @import url("./style.css");
 
 .products-header-cont{
-    width: 100%;
+    width: 50%;
     height: auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-.products-header-cont .left{
-    display: flex;
-    color: #ccc;
-    font-weight: 900;
-    display: flex;
-    background: #000;
-    margin-top: 20px;
-    width: 10%;
-    height: 50px;
-    flex-direction: row;
-    border-left: 2px solid var(--y);
+    justify-content:space-between;
 }
 
-
-.products-header-cont .left .products-options{
-    display: flex;
-    color: #ccc;
-    font-weight: 900;
-    display: flex;
-    background: #000;
-    margin-top: 20px;
-    width: 50%;
-    height: 50px;
-    flex-direction: row;
-    border-left: 2px solid var(--y);
-}
-.products-header-cont .left .products-count{
-    font-weight: 900;
-    padding: 5px;
-
-}
-.products-header-cont .left .qrcode-icon{
-    padding: 10px;
-    font-size: 25px;
-    border-radius: 5px;
-    transform: scale(.65);
-    transition: .2s ease;
-    cursor: pointer;
-    background: rgba(255, 217, 0, 0.286);
-    color: var(--y);
-} 
-
-
-.products-header-cont .left ion-icon:focus{
-    transform: scale(.85);
-    transition: .2s ease;
+.products-header-cont input{
+    background: var(--dark3);
+    padding: 14px;
+    transform: scale(.75);
+    text-indent: 10px;
+    border: 1px solid var(--y);
+    color: #fff;
 }
 
+.products-header-cont .search-btn{
+    background: var(--y);
+}
 .download-btn{
     color: #0026ff;
     background: rgba(4, 0, 255, 0.4);
@@ -136,7 +101,7 @@
     align-items: center;
     justify-content: center;
     background: #000;
-    /* display: none; */
+    display: none;
 }
 
 .edit-product-modal .close-modal{
@@ -175,8 +140,42 @@
     display: none;
 }
 
-
-
+.edit-image-modal{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height: 100vh;
+    background: var(--dark3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    display: none;
+}
+.edit-image-modal .box{
+    width: 350px;
+    height: 350px;
+    background: var(--dark2);
+    padding: 20px;
+}
+.edit-image-modal .box .image-preview{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 30px;
+}
+.edit-image-modal .box .close-editimage-modal{
+    position: relative;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 50%;
+    color: red;
+    background: rgba(255,0,0,.4);
+    cursor: pointer;
+}
 
 
 

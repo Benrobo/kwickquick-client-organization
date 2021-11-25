@@ -68,14 +68,14 @@
       </div>
 
       <div class="products-header-cont">
-        <div class="left">
-          <input
+        <input
             type="text"
             placeholder="Search"
             class="search-form form-control"
           />
-        </div>
+          <button class="btn search-btn">Search</button>
       </div>
+      <hr>
 
       <div class="products-main-container">
         <table class="products-table">
@@ -99,51 +99,63 @@
                 <span class="orgId">22.44.02</span>
               </td>
               <td>
-                <button class="btn products-info-btn btn-success" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="bread" data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="45">Edit</button>
+                <button class="btn products-info-btn product-edit-btn btn-success" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="milk" data-qrcode-orgId="desff453643"
+                data-product-id="" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="22">Edit</button>
 
-                <button class="btn products-info-btn btn-danger"
-                data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436">Delete</button>
+                <button class="btn products-info-btn product-delete-btn btn-danger"
+                data-qrcode-orgId="desff453643" 
+                data-product-id=""
+                data-qrcode-hash="435645g45ty45y4ge5436">Delete</button>
+
+                <div class="edit-product-modal">
+                    <ion-icon name="close" class="close-modal"></ion-icon>
+                    <div class="post-form-cont">
+                        <div class="left">
+                          <div class="head">
+                            <h5>Edit Product</h5>
+                          </div>
+                          <div class="form-cont">
+                            <input type="text" placeholder="Name" class="form-control pName" />
+                
+                            <input
+                              type="number"
+                              placeholder="Price"
+                              class="form-control pPrice"
+                            />
+                            <select class="form-control currencies"></select>
+                          </div>
+                        </div>
+                        <div class="right">
+                            <div class="check-edit-img">
+                                <input type="checkbox" class="edit-image-chk">
+                                edit image
+                            </div>
+                          <button class="btn submit-btn brand-btn-o">Submit</button>
+                        </div>
+                      </div>
+            
+                      <div class="edit-image-modal" data-product-id="bfa91ca6-ee45-4714-9a3a-43e4cc5d178f" data-qrcode-orgId="somerandomid">
+                        <div class="box">
+                            <ion-icon name="close" class="close-editimage-modal"></ion-icon>
+                              <input type="file" hidden class="imageInp" />
+                              <div class="image-preview">
+                                <img alt="" class="img-fluid product-image-preview" />
+                              </div>
+                              <button class="btn upload visible">
+                                <ion-icon name="cloud-upload-outline" ></ion-icon>
+                                Choose File
+                              </button>
+                              <button class="edit-image-upload-btn btn-primary btn">Upload</button>
+                        </div>
+                      </div>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="edit-product-modal">
-        <ion-icon name="close" class="close-modal"></ion-icon>
-        <div class="post-form-cont">
-            <div class="left">
-              <div class="head">
-                <h5>Edit Product</h5>
-              </div>
-              <div class="form-cont">
-                <input type="text" placeholder="Name" class="form-control pName" />
-    
-                <input
-                  type="number"
-                  placeholder="Price"
-                  class="form-control pPrice"
-                />
-                <select class="form-control currencies"></select>
-              </div>
-            </div>
-            <div class="right">
-                <div class="check-edit-img">
-                    <input type="checkbox" class="edit-image-chk">
-                    edit image
-                </div>
-              <button class="btn upload visible">
-                <ion-icon name="cloud-upload-outline" ></ion-icon>
-                Choose File
-              </button>
-              <input type="file" hidden class="imageInp" />
-              <div class="image-preview">
-                <img alt="" class="img-fluid product-image-preview" />
-              </div>
-              <button class="btn submit-btn brand-btn-o">Submit</button>
-            </div>
-          </div>
-      </div>
+      
 
     </div>
 

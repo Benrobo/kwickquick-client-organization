@@ -30,8 +30,18 @@ function Alert() {
         })
     }
 }
-
 let alert = new Alert()
+
+async function request(api, data, method, headers) {
+    let req = await fetch(api, {
+        method,
+        headers,
+        body: JSON.stringify(data)
+    })
+
+    let res = await req.json()
+    return { req, res };
+}
 
 const NavBarDropDown = () => {
     let dropdowncont = $(".dropdown-content");
@@ -62,7 +72,7 @@ const ProductsDetails = () => {
 
 }
 
-const createCountryCurrencies = async ()=>{
+const createCountryCurrencies = async () => {
     let currencyInp = $(".currencies");
     let req = await fetch("js/currency.json");
     let data = await req.json();
@@ -321,7 +331,7 @@ const QRCODE_PAGE = () => {
     }
 
     function deleteQrcode(hash) {
-        return async ()=>{
+        return async () => {
             let senddata = {
                 pId: "b03e9dae-96ff-47e4-a867-9d6f454b336f",
                 orId: "b50b9c7c-1ba1-4665-b39f-f61865a49792"
@@ -343,7 +353,7 @@ const QRCODE_PAGE = () => {
         }
     }
 
-    function generateQrcode(elm, text){
+    function generateQrcode(elm, text) {
         return new QRCode(elm, {
             text: text,
             width: 200,
@@ -357,7 +367,7 @@ const QRCODE_PAGE = () => {
 
 
 // PRODUCTS PAGE
-const PRODUCTS_PAGE = ()=>{
+const PRODUCTS_PAGE = () => {
     let nameInp = $(".pName")
     let priceInp = $(".pPrice")
     let currencyInp = $(".currencies");
@@ -366,6 +376,13 @@ const PRODUCTS_PAGE = ()=>{
     let imgPreview = $(".product-image-preview");
     let submitBtn = $(".submit-btn");
     let chkImageEdit = $(".edit-image-chk");
+    let editBtn = $all(".product-edit-btn");
+    let deleteBtn = $all(".product-edit-btn");
+    let editModal = $(".edit-product-modal");
+    let closeModal = $(".close-modal");
+    let editImageModal = $(".edit-image-modal");
+    let closeEditImage = $(".close-editimage-modal");
+    let editImageUploadBtn = $(".edit-image-upload-btn")
 
     let base64Image = "";
     let loading = false;
@@ -378,12 +395,137 @@ const PRODUCTS_PAGE = ()=>{
         file.click()
     };
 
+    // close modal
+    closeModal.onclick = () => {
+        editModal.style.display = "none"
+    }
+
+    closeEditImage.onclick = () => {
+        chkImageEdit.checked = false;
+        editImageModal.style.display = "none"
+    }
+
+    // show the edit modal
+    if (editBtn.length > 1) {
+        editBtn.forEach((btn) => {
+            btn.onclick = (e) => {
+                editModal.style.display = "flex"
+
+                let target = e.target;
+
+                let hash = target.getAttribute("data-qrcode-hash")
+                let itemName = target.getAttribute("data-qrcode-item")
+                let orgId = target.getAttribute("data-qrcode-orgId")
+                let price = target.getAttribute("data-qrcode-price");
+
+                nameInp.value = itemName;
+                priceInp.value = price;
+
+
+            }
+        })
+    }
+    else {
+        editBtn[0].onclick = (e) => {
+            editModal.style.display = "flex"
+
+            let target = e.target;
+
+            let hash = target.getAttribute("data-qrcode-hash")
+            let itemName = target.getAttribute("data-qrcode-item")
+            let orgId = target.getAttribute("data-qrcode-orgId")
+            let price = target.getAttribute("data-qrcode-price");
+
+            nameInp.value = itemName;
+            priceInp.value = price;
+
+        }
+    }
+    let test = ""
+    editBtn.onclick = (e) => {
+        editModal.style.display = "flex"
+
+        let target = e.target;
+
+        let pId = target.getAttribute("data-product-id")
+        let itemName = target.getAttribute("data-qrcode-item")
+        let orgId = target.getAttribute("data-qrcode-orgId")
+        let price = target.getAttribute("data-qrcode-price");
+
+        nameInp.value = itemName;
+        priceInp.value = price;
+
+    }
+
+    editImageUploadBtn.onclick = async (e) => {
+        let target = e.target.parentElement.parentElement;
+
+        let pId = target.getAttribute("data-product-id")
+        let orgId = target.getAttribute("data-qrcode-orgId")
+
+        if (base64Image === "") {
+            alert.error("No image is selected")
+            return;
+        }
+
+        // send data
+        try {
+            loading = true;
+            editImageUploadBtn.innerHTML = "Uploading..."
+            let data = {
+                pId,
+                orgId,
+                pImage: base64Image
+            }
+            let api = "http://localhost:5000/kwickquick/api/editProductImage"
+            let { req, res } = await request(api, data, "put", {
+                "content-type": "application/json",
+                "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ"
+            })
+            console.log(res)
+            if (req.status === 200) {
+                loading = false;
+                editImageUploadBtn.innerHTML = "Upload"
+                return alert.success("Image uploaded successfully")
+            } else {
+                loading = false;
+                editImageUploadBtn.innerHTML = "Upload"
+                return alert.error("Failed to update image, something went wrong")
+            }
+        } catch (e) {
+            return alert.error("Failed to update image, something went wrong")
+        }
+    }
+
+    // edit image data and send
+
+    // resize image
+    // const resizeImg = (fileData, mimeType)=>{
+    //     let img = document.createElement("img")
+    //     img.width = 200
+    //     img.height = 200;
+    //     img.src = imgPreview.src
+    //     let canvas = document.createElement("canvas");
+    //     canvas.width = 250;
+    //     canvas.height = 250;
+    //     let newimg = imgPreview
+    //     let ctx = canvas.getContext("2d")
+    //     img.onload = ()=>{
+    //         ctx.drawImage(img, 0,0, canvas.width, canvas.height)
+    //     }
+    //     let blob = canvas.toDataURL(mimeType)
+    //     // img.src = blob;
+    //     console.log(blob, imgPreview.src)
+    // }
+
     file.onchange = (e) => {
         let newfile = file.files[0];
         let imageSrc = URL.createObjectURL(newfile);
         imgPreview.src = imageSrc
         let reader = new FileReader()
         reader.readAsDataURL(newfile);
+
+        // resizeImg(newfile, newfile.type)
 
         reader.onload = function () {
             base64Image = reader.result;
@@ -412,18 +554,15 @@ const PRODUCTS_PAGE = ()=>{
             loading = true;
             submitBtn.innerHTML = "Loading ....."
             submitBtn.classList.add("loading")
-            let req = await fetch("http://localhost:5000/kwickquick/api/addProducts", {
-                method: "post",
-                headers: {
-                    "content-type": "application/json",
-                    "authorization": `Bearer`
-                },
-                body: JSON.stringify(data)
+
+            let api = "http://localhost:5000/kwickquick/api/addProducts"
+            let { req, res } = await await request(api, data, "put", {
+                "content-type": "application/json",
+                "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ"
             })
-            let result = await req.json();
 
             console.log(result)
-            if (result === "" || !result) {
+            if (res === "" || !res) {
                 qrcodeBox.innerHTML = "Product qrcode would be visible when products as been added."
                 return;
             }
@@ -455,12 +594,12 @@ const PRODUCTS_PAGE = ()=>{
     }
 
     // edit image
-    console.log(chkImageEdit.checked)
-    chkImageEdit.onclick = (e)=>{
-        if(!chkImageEdit.checked) {
-            uploadBtn.style.display = "none"
+    chkImageEdit.onclick = (e) => {
+        if (!chkImageEdit.checked) {
+
+            editImageModal.style.display = "none"
             return
         };
-        uploadBtn.style.display = "flex"
+        editImageModal.style.display = "flex"
     }
 }

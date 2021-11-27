@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.css" />
     <link rel="stylesheet" href="./assets/css/auth.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/sweetalert.css" />
   </head>
   <body>
     <!-- back arrow -->
@@ -34,19 +35,22 @@
             placeholder="Email"
             class="form-control org-email"
             required
-            required
+            autofocus
           />
           <input
             type="password"
             placeholder="Pasword"
             class="form-control org-pwd"
             required
+            autofocus
           />
 
           <div class="controls">
             <button class="btn submit-btn">Login</button>
 
-            <small>Dont Have a kwickquick account ? <a href="signup.html">signup</a> </small>
+            <small
+              >Dont Have a kwickquick account ? <a href="signup.html">signup</a>
+            </small>
           </div>
         </div>
       </form>
@@ -61,7 +65,18 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./assets/js/sweetalert.js"></script>
+    <script src="./assets/js/checkAuth.js"></script>
+    <script src="./assets/js/app.js"></script>
     <script>
+      LOGIN();
+
+      if (!isLoggedIn()) {
+        ("");
+      }
+
+      redirect(0, "/dashboard");
+
       AOS.init({
         duration: 1200,
       });

@@ -122,7 +122,9 @@
                 <td class="payment">Master Card</td>
                 <td>Wed 4, 2021</td>
                 <td>
-                  <button class="btn more-info products-details-btn">Details</button>
+                  <button class="btn more-info products-details-btn">
+                    Details
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -132,7 +134,12 @@
                 <td class="payment">Master Card</td>
                 <td>Wed 4, 2021</td>
                 <td>
-                  <button class="btn more-info products-details-btn" data-product-id="productid">Details</button>
+                  <button
+                    class="btn more-info products-details-btn"
+                    data-product-id="productid"
+                  >
+                    Details
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -145,7 +152,11 @@
         <div class="products-info">
           <ion-icon name="close" class="close-products-modal"></ion-icon>
           <div class="top-head">
-            <img src="https://avatars.dicebear.com/api/micah/john%20brains.svg" alt="" class="img-fluid" />
+            <img
+              src="https://avatars.dicebear.com/api/micah/john%20brains.svg"
+              alt=""
+              class="img-fluid"
+            />
             <div class="user-details">
               <h4>John Brains</h4>
               <span class="type">Customer</span>
@@ -153,14 +164,16 @@
           </div>
           <div class="middle">
             <p>Purchased Products</p>
-          <hr />
+            <hr />
           </div>
           <div class="purchase-products">
             <div class="purchase-card">
               <img src="./img/products/milk.png" alt="" class="img-fluid" />
               <div class="info">
                 <p class="name"><span class="qty">Item Name: </span>Milk</p>
-                <span class="qty">Quantity: <span class="qty-num">3</span> </span>
+                <span class="qty"
+                  >Quantity: <span class="qty-num">3</span>
+                </span>
               </div>
             </div>
           </div>
@@ -179,9 +192,14 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="./js/main.js"></script>
+    <script src="../assets/js/checkAuth.js"></script>
     <script>
-      NavBarDropDown()
-      ProductsDetails()
+      NavBarDropDown();
+      ProductsDetails();
+
+      if (!isLoggedIn()) {
+        redirect(0, "../login.html");
+      }
     </script>
   </body>
 </html>

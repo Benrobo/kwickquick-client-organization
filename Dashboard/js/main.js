@@ -1,7 +1,3 @@
-
-
-
-
 const $ = (elm) => {
     return document.querySelector(elm)
 }
@@ -10,8 +6,15 @@ const $all = (elm) => {
     return document.querySelectorAll(elm)
 }
 
+function redirect(time, path) {
+    setTimeout(() => {
+        location = path
+    }, time);
+}
+
 
 function Alert() {
+
     this.success = (text) => {
         return Swal.fire({
             title: 'Success!',
@@ -32,6 +35,7 @@ function Alert() {
 }
 let alert = new Alert()
 
+
 async function request(api, data, method, headers) {
     let req = await fetch(api, {
         method,
@@ -43,6 +47,8 @@ async function request(api, data, method, headers) {
     return { req, res };
 }
 
+// navbar
+
 const NavBarDropDown = () => {
     let dropdowncont = $(".dropdown-content");
     let dropdownicon = $(".dropdown-icon");
@@ -52,8 +58,7 @@ const NavBarDropDown = () => {
     }
 }
 
-
-
+// products
 const ProductsDetails = () => {
     let detailsBtn = $all(".products-details-btn");
     let productModal = $(".products-info-modal");
@@ -90,6 +95,8 @@ const createCountryCurrencies = async () => {
     }
 }
 
+
+// Add products
 const ADD_PRODUCTS = async () => {
     let nameInp = $(".pName")
     let priceInp = $(".pPrice")
@@ -203,8 +210,6 @@ const ADD_PRODUCTS = async () => {
         qrcodeImageModal.style.visibility = "visible"
     }
 }
-
-
 
 // QRCODE PAGE CONT
 const QRCODE_PAGE = () => {
@@ -377,17 +382,23 @@ const PRODUCTS_PAGE = () => {
     let submitBtn = $(".submit-btn");
     let chkImageEdit = $(".edit-image-chk");
     let editBtn = $all(".product-edit-btn");
-    let deleteBtn = $all(".product-edit-btn");
+    let deleteBtn = $all(".product-delete-btn");
     let editModal = $(".edit-product-modal");
     let closeModal = $(".close-modal");
     let editImageModal = $(".edit-image-modal");
     let closeEditImage = $(".close-editimage-modal");
-    let editImageUploadBtn = $(".edit-image-upload-btn")
+    let editImageUploadBtn = $all(".edit-image-upload-btn")
 
     let base64Image = "";
     let loading = false;
 
     createCountryCurrencies()
+
+    // get all data
+    const getAllProducts = async () => {
+        let api = "http://localhost:5000/kwickquick/api/all/getOrgProducts"
+        let { req, res } = await request(api,)
+    }
 
 
     // handle base64 image
@@ -441,82 +452,160 @@ const PRODUCTS_PAGE = () => {
 
         }
     }
-    let test = ""
-    editBtn.onclick = (e) => {
-        editModal.style.display = "flex"
 
-        let target = e.target;
+    if (editImageUploadBtn.length > 1) {
+        editImageUploadBtn.forEach((btn) => {
+            btn.onclick = async (e) => {
+                let target = e.target.parentElement.parentElement;
 
-        let pId = target.getAttribute("data-product-id")
-        let itemName = target.getAttribute("data-qrcode-item")
-        let orgId = target.getAttribute("data-qrcode-orgId")
-        let price = target.getAttribute("data-qrcode-price");
+                let pId = target.getAttribute("data-product-id")
+                let orgId = target.getAttribute("data-qrcode-orgId")
 
-        nameInp.value = itemName;
-        priceInp.value = price;
+                if (base64Image === "") {
+                    alert.error("No image is selected")
+                    return;
+                }
 
-    }
-
-    editImageUploadBtn.onclick = async (e) => {
-        let target = e.target.parentElement.parentElement;
-
-        let pId = target.getAttribute("data-product-id")
-        let orgId = target.getAttribute("data-qrcode-orgId")
-
-        if (base64Image === "") {
-            alert.error("No image is selected")
-            return;
-        }
-
-        // send data
-        try {
-            loading = true;
-            editImageUploadBtn.innerHTML = "Uploading..."
-            let data = {
-                pId,
-                orgId,
-                pImage: base64Image
+                // send data
+                try {
+                    loading = true;
+                    editImageUploadBtn.innerHTML = "Uploading..."
+                    let data = {
+                        pId,
+                        orgId,
+                        pImage: base64Image
+                    }
+                    let api = "http://localhost:5000/kwickquick/api/editProductImage"
+                    let { req, res } = await request(api, data, "put", {
+                        "content-type": "application/json",
+                        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ"
+                    })
+                    console.log(res)
+                    if (req.status === 200) {
+                        loading = false;
+                        editImageUploadBtn.innerHTML = "Upload"
+                        return alert.success("Image uploaded successfully")
+                    } else {
+                        loading = false;
+                        editImageUploadBtn.innerHTML = "Upload"
+                        return alert.error("Failed to update image, something went wrong")
+                    }
+                } catch (e) {
+                    loading = false;
+                    editImageUploadBtn.innerHTML = "Upload"
+                    return alert.error("Failed to update image, something went wrong")
+                }
             }
-            let api = "http://localhost:5000/kwickquick/api/editProductImage"
-            let { req, res } = await request(api, data, "put", {
-                "content-type": "application/json",
-                "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ"
-            })
-            console.log(res)
-            if (req.status === 200) {
-                loading = false;
-                editImageUploadBtn.innerHTML = "Upload"
-                return alert.success("Image uploaded successfully")
-            } else {
+        })
+    }
+    else {
+        editImageUploadBtn[0].onclick = async (e) => {
+            let target = e.target.parentElement.parentElement;
+
+            let pId = target.getAttribute("data-product-id")
+            let orgId = target.getAttribute("data-qrcode-orgId")
+
+            if (base64Image === "") {
+                alert.error("No image is selected")
+                return;
+            }
+
+            // send data
+            try {
+                loading = true;
+                editImageUploadBtn.innerHTML = "Uploading..."
+                let data = {
+                    pId,
+                    orgId,
+                    pImage: base64Image
+                }
+                let api = "http://localhost:5000/kwickquick/api/editProductImage"
+                let { req, res } = await request(api, data, "put", {
+                    "content-type": "application/json",
+                    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ"
+                })
+                console.log(res)
+                if (req.status === 200) {
+                    loading = false;
+                    editImageUploadBtn.innerHTML = "Upload"
+                    return alert.success("Image uploaded successfully")
+                } else {
+                    loading = false;
+                    editImageUploadBtn.innerHTML = "Upload"
+                    return alert.error("Failed to update image, something went wrong")
+                }
+            } catch (e) {
                 loading = false;
                 editImageUploadBtn.innerHTML = "Upload"
                 return alert.error("Failed to update image, something went wrong")
             }
-        } catch (e) {
-            return alert.error("Failed to update image, something went wrong")
         }
     }
 
-    // edit image data and send
+    // delete products
+    if (deleteBtn.length > 1) {
+        deleteBtn.forEach((btn) => {
+            btn.onclick = async (e) => {
+                let target = e.target;
 
-    // resize image
-    // const resizeImg = (fileData, mimeType)=>{
-    //     let img = document.createElement("img")
-    //     img.width = 200
-    //     img.height = 200;
-    //     img.src = imgPreview.src
-    //     let canvas = document.createElement("canvas");
-    //     canvas.width = 250;
-    //     canvas.height = 250;
-    //     let newimg = imgPreview
-    //     let ctx = canvas.getContext("2d")
-    //     img.onload = ()=>{
-    //         ctx.drawImage(img, 0,0, canvas.width, canvas.height)
-    //     }
-    //     let blob = canvas.toDataURL(mimeType)
-    //     // img.src = blob;
-    //     console.log(blob, imgPreview.src)
-    // }
+                let pId = target.getAttribute("data-product-id")
+                let orgId = target.getAttribute("data-orgId")
+                console.log(pId, orgId)
+                try {
+                    let api = "http://localhost:5000/kwickquick/api/deleteProduct"
+                    let { req, res } = await request(api, { pId, orgId }, "delete", {
+                        "content-type": "application/json",
+                        "authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ`
+                    })
+                    console.log(res)
+                    if (req.status === 200) {
+                        alert.success("Product deleted successfully")
+                        loading = false;
+                        setTimeout(() => {
+                            location.reload(true)
+                        }, 1000);
+                        return;
+                    } else {
+                        alert.error(res.message)
+                    }
+                } catch (e) {
+                    alert.error("Something went wrong deleteing item, please try later")
+                    loading = false;
+                }
+            }
+        })
+        return;
+    }
+    else {
+        deleteBtn[0].onclick = async (e) => {
+            let target = e.target;
+
+            let pId = target.getAttribute("data-product-id")
+            let orgId = target.getAttribute("data-orgId")
+            console.log(pId, orgId)
+            try {
+                let api = "http://localhost:5000/kwickquick/api/deleteProduct"
+                let { req, res } = await request(api, { pId, orgId }, "delete", {
+                    "content-type": "application/json",
+                    "authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ`
+                })
+                console.log(res)
+                if (req.status === 200) {
+                    alert.success("Product deleted successfully")
+                    loading = false;
+                    setTimeout(() => {
+                        location.reload(true)
+                    }, 1000);
+                    return;
+                } else {
+                    alert.error(res.message)
+                }
+            } catch (e) {
+                alert.error("Something went wrong deleteing item, please try later")
+                loading = false;
+            }
+        }
+    }
 
     file.onchange = (e) => {
         let newfile = file.files[0];
@@ -555,34 +644,23 @@ const PRODUCTS_PAGE = () => {
             submitBtn.innerHTML = "Loading ....."
             submitBtn.classList.add("loading")
 
-            let api = "http://localhost:5000/kwickquick/api/addProducts"
+            let api = "http://localhost:5000/kwickquick/api/editProduct"
             let { req, res } = await await request(api, data, "put", {
                 "content-type": "application/json",
                 "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YjkyMDQ5LWVlMjktNDEzYS1hNDIxLTY2NzJjYjk5NDRkZSIsImVtYWlsIjoidGVzbGEzQG1haWwuY29tIiwiaWF0IjoxNjM3NTE5OTI3LCJleHAiOjE2NjkwNzc1Mjd9.AK4kG0T9gM0KaxoqsaspX2EDTYq3P4bLuiHgomfKkIQ"
             })
 
-            console.log(result)
-            if (res === "" || !res) {
-                qrcodeBox.innerHTML = "Product qrcode would be visible when products as been added."
-                return;
-            }
-            else if (req.status === 200) {
+            console.log(res)
+
+            if (req.status === 200) {
                 alert.success("Product added successfully")
                 loading = false;
                 submitBtn.innerHTML = "Submit"
                 submitBtn.classList.remove("loading")
-                // qrcodeBox.innerHTML = `
-                //     <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${result.productId}" />
-                // `
-                qrcodeBox.innerHTML = ""
-                new QRCode(qrcodeBox, {
-                    text: result.productId,
-                    width: 320,
-                    height: 320,
-                    colorDark: "#000000",
-                    colorLight: "#ffffff",
-                    correctLevel: QRCode.CorrectLevel.H
-                });
+                return;
+            }
+            else {
+                alert.error(res.message)
             }
         } catch (e) {
             alert.error("Something went wrong")
@@ -603,3 +681,5 @@ const PRODUCTS_PAGE = () => {
         editImageModal.style.display = "flex"
     }
 }
+
+

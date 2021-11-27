@@ -7,7 +7,7 @@
     <title>KwickQuick</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <header class="header">
@@ -28,8 +28,10 @@
             <li><a href="">Home</a></li>
             <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
-            <li><a href="">Login</a></li>
-            <li><a href="">Dashboard</a></li>
+            <li class="login-list"><a href="">Login</a></li>
+            <li class="dashboard-list">
+              <a href="/dashboard">Dashboard</a>
+            </li>
             <li>
               <a href="signup.html">
                 <button class="btn barnd-btn-f">Signup</button>
@@ -40,19 +42,21 @@
 
         <!-- burger menu -->
         <div class="burger-cont">
-          <ion-icon name="grid"></ion-icon>
+          <ion-icon name="grid" class="navbar-burger"></ion-icon>
         </div>
 
         <div class="sidebar-nav">
-            <div class="top-head">
-                <ion-icon class="closenavbar" name="close-outline"></ion-icon>
-            </div>
+          <div class="top-head">
+            <ion-icon class="closenavbar" name="close-outline"></ion-icon>
+          </div>
           <ul class="list-group">
             <li><a href="">Home</a></li>
             <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
-            <li><a href="">Login</a></li>
-            <li><a href="">Dashboard</a></li>
+            <li class="login-list"><a href="">Login</a></li>
+            <li class="dashboard-list">
+              <a href="/dashboard">Dashboard</a>
+            </li>
             <li>
               <a href="signup.html">
                 <button class="btn barnd-btn-f">Signup</button>
@@ -64,16 +68,17 @@
 
       <div class="header-ovl p-3">
         <div class="left" data-aos="fade-right">
-            <p class="brand">KwickQuick</p>
-            <h1 class="display-4 heading">
-              Tired Of The Queue?
-            </h1>
-            <h3>
-              We Got You Cover.
-            </h3>
+          <p class="brand">KwickQuick</p>
+          <h1 class="display-4 heading">Tired Of The Queue?</h1>
+          <h3>We Got You Cover.</h3>
         </div>
         <div class="right">
-          <img src="./assets/img/illus/q2.png" alt="" class="img-fluid" data-aos="fade-left">
+          <img
+            src="./assets/img/illus/q2.png"
+            alt=""
+            class="img-fluid"
+            data-aos="fade-left"
+          />
         </div>
       </div>
     </header>
@@ -92,7 +97,10 @@
             </div>
             <div class="body">
               <p>Quick and Simple</p>
-              <span>As the brandname implies kwickquick, makes shopping faster in a more minimalistic way.</span>
+              <span
+                >As the brandname implies kwickquick, makes shopping faster in a
+                more minimalistic way.</span
+              >
             </div>
           </div>
           <div class="f-card">
@@ -110,7 +118,10 @@
             </div>
             <div class="body">
               <p>Intuitive</p>
-              <span>No matter how complex the system is, kwickquick can be use by any organization out there.</span>
+              <span
+                >No matter how complex the system is, kwickquick can be use by
+                any organization out there.</span
+              >
             </div>
           </div>
         </div>
@@ -118,7 +129,7 @@
       <!-- How it work -->
       <div class="how-cont">
         <div class="top-head" data-aos="fade-bottom">
-          <h2>How Does It Work </h2>
+          <h2>How Does It Work</h2>
           <p>You're only a few simple steps away</p>
         </div>
         <div class="body" data-aos="fade-up">
@@ -139,7 +150,10 @@
               <ion-icon name="cloud-upload-outline"></ion-icon>
             </div>
             <div class="body">
-              <h2><div class="how-num">2</div>Uploading & Adding Products</h2>
+              <h2>
+                <div class="how-num">2</div>
+                Uploading & Adding Products
+              </h2>
               <p>Organization can now add their products.</p>
             </div>
           </div>
@@ -148,8 +162,14 @@
               <ion-icon name="qr-code-outline"></ion-icon>
             </div>
             <div class="body">
-              <h2><div class="how-num">3</div>Generate QRCODE</h2>
-              <p>Genarting of printable product qrcode can be done with just a click and then added on each products and then scanned by users.</p>
+              <h2>
+                <div class="how-num">3</div>
+                Generate QRCODE
+              </h2>
+              <p>
+                Genarting of printable product qrcode can be done with just a
+                click and then added on each products and then scanned by users.
+              </p>
             </div>
           </div>
         </div>
@@ -166,9 +186,7 @@
             </div>
             <div class="body">
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="star-rating">
-                5 <ion-icon name="star"></ion-icon>
-              </div>
+              <div class="star-rating">5 <ion-icon name="star"></ion-icon></div>
             </div>
           </div>
         </div>
@@ -176,7 +194,11 @@
       <!-- Get started -->
       <div class="started-cont">
         <h2>Get Started in No Time</h2>
-        <p>Kwickquick makes it easy to reduce the numbers of customer queues in no time and increasing the number of revenue you make so you can start promoting or selling your digital product to your audience.</p>
+        <p>
+          Kwickquick makes it easy to reduce the numbers of customer queues in
+          no time and increasing the number of revenue you make so you can start
+          promoting or selling your digital product to your audience.
+        </p>
         <button class="btn start-btn">
           <ion-icon name="arrow-forward"></ion-icon> Get Started
         </button>
@@ -199,9 +221,36 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./assets/js/checkAuth.js"></script>
+    <script src="./assets/js/app.js"></script>
     <script>
+      SIDEBAR();
+
+      let dashboardList = document.querySelectorAll(".dashboard-list");
+      let loginList = $all(".login-list");
+
+      dashboardList.forEach((list) => {
+        if (!isLoggedIn) {
+          list.style.display = "none";
+          return;
+        } else {
+          list.style.display = "block";
+          return;
+        }
+      });
+
+      loginList.forEach((list) => {
+        if (!isLoggedIn) {
+          list.style.display = "block";
+          return;
+        } else {
+          list.style.display = "none";
+          return;
+        }
+      });
+
       AOS.init({
-        duration: 1200
+        duration: 1200,
       });
     </script>
   </body>

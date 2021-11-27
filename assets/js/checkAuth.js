@@ -30,7 +30,6 @@ let decodeJwt = new DecodeJWT()
 
 const isLoggedIn = () => {
     let tokens = getOrgInfo()
-
     if (!tokens || tokens.refreshToken === "" || tokens.accessToken === "") {
         return false;
     }

@@ -69,14 +69,15 @@
     <script src="./assets/js/checkAuth.js"></script>
     <script src="./assets/js/app.js"></script>
     <script>
-      LOGIN();
-
-      if (!isLoggedIn()) {
-        ("");
+      function check() {
+        if (isLoggedIn()) {
+          redirect(0, "/dashboard");
+        }
       }
+      check();
+      // redirect(0, "/dashboard");
 
-      redirect(0, "/dashboard");
-
+      LOGIN();
       AOS.init({
         duration: 1200,
       });

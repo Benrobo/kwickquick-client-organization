@@ -45,20 +45,17 @@
       <!-- navbar -->
       <div class="dash-nav">
         <div class="right">
-          <img
+          <!-- <img
             src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
             alt=""
-            class="img-fluid"
-          />
-          <div class="info">
-            <span><b>Tesla Motor</b></span>
-            <small>Chief Manager</small>
-          </div>
+            class="img-fluid org-image"
+          /> -->
+          <div class="info"></div>
           <div class="drop-down-cont">
             <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
             <div class="dropdown-content">
               <ul>
-                <li>
+                <li class="logout-btn">
                   <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
                 </li>
               </ul>
@@ -70,9 +67,7 @@
       <div class="qrcode-header-cont">
         <div class="left">
           <ion-icon name="qr-code-outline" class="qrcode-icon"></ion-icon>
-            <h3 class="qrcodes-count">
-              115
-            </h3>
+          <h3 class="qrcodes-count"></h3>
         </div>
       </div>
 
@@ -86,7 +81,7 @@
             <th>Details</th>
           </thead>
           <tbody class="qrcode-table-body">
-            <tr>
+            <!-- <tr>
               <td>
                 <div class="info">
                   <div class="text">
@@ -105,18 +100,30 @@
                 <span>04.25.022</span>
               </td>
               <td>
-                <button class="btn details qrcode-info-btn" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="bread" data-qrcode-orgId="desff453643" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="45">Details</button>
+                <button
+                  class="btn details qrcode-info-btn"
+                  data-qrcode-img="https://qrtag.net/api/qr_4.png"
+                  data-qrcode-item="bread"
+                  data-qrcode-orgId="desff453643"
+                  data-qrcode-hash="435645g45ty45y4ge5436"
+                  data-qrcode-price="45"
+                >
+                  Details
+                </button>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
 
       <!-- right sidebar -->
       <div class="qrcode-sidebar">
-        <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
-          <div class="main main-qrcode-cont mt-5">
-            <!-- <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
+        <ion-icon
+          name="close-outline"
+          class="close-btn close-qrcode-btn"
+        ></ion-icon>
+        <div class="main main-qrcode-cont mt-5">
+          <!-- <ion-icon name="close-outline" class="close-btn close-qrcode-btn"></ion-icon>
               <div class="top">
                   <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=benrobo%20is%20awesome" alt="" class="img-fluid">
                   <button class="download btn">Download</button>
@@ -129,7 +136,7 @@
                   <p><b>Price</b></p>
                   <span>23</span>
               </div> -->
-          </div> 
+        </div>
       </div>
     </div>
 
@@ -142,9 +149,19 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./js/main.js"></script>
     <script src="./js/qr.js"></script>
+    <script src="../assets/js/moment.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="../assets/js/checkAuth.js"></script>
     <script>
+      function check() {
+        if (!isLoggedIn()) {
+          redirect(0, "../login.html");
+        }
+      }
+
+      check();
+
       NavBarDropDown();
       QRCODE_PAGE();
     </script>

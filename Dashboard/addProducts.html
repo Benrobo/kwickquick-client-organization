@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/sweetalert.js"></script>
-    <link rel="stylesheet" href="./css/sweetalert.css">
+    <link rel="stylesheet" href="./css/sweetalert.css" />
   </head>
   <body>
     <!-- sidebar -->
@@ -25,10 +25,10 @@
             <li class="">Dashboard</li>
           </a>
           <a href="./addProducts.html">
-            <li class="">Add Product</li>
+            <li class="active">Add Product</li>
           </a>
           <a href="qrcodes.html">
-            <li class="active">Print QRCODES</li>
+            <li class="">Print QRCODES</li>
           </a>
           <a href="products.html">
             <li class="">Manage Products</li>
@@ -45,20 +45,17 @@
       <!-- navbar -->
       <div class="dash-nav">
         <div class="right">
-          <img
+          <!-- <img
             src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
             alt=""
-            class="img-fluid"
-          />
-          <div class="info">
-            <span><b>Tesla Motor</b></span>
-            <small>Chief Manager</small>
-          </div>
+            class="img-fluid org-image"
+          /> -->
+          <div class="info"></div>
           <div class="drop-down-cont">
             <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
             <div class="dropdown-content">
               <ul>
-                <li>
+                <li class="logout-btn">
                   <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
                 </li>
               </ul>
@@ -119,11 +116,19 @@
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js"></script>
+    <script src="../assets/js/checkAuth.js"></script>
     <script src="./js/qr.js"></script>
     <script>
+      function check() {
+        if (!isLoggedIn() && location.pathname === "/addProducts.html") {
+          redirect(0, "../login.html");
+        }
+        return null;
+      }
+      check();
+
       NavBarDropDown();
       ADD_PRODUCTS();
-
     </script>
   </body>
 </html>

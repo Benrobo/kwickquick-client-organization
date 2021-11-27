@@ -45,20 +45,17 @@
       <!-- navbar -->
       <div class="dash-nav">
         <div class="right">
-          <img
+          <!-- <img
             src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
             alt=""
-            class="img-fluid"
-          />
-          <div class="info">
-            <span><b>Tesla Motor</b></span>
-            <small>Chief Manager</small>
-          </div>
+            class="img-fluid org-image"
+          /> -->
+          <div class="info"></div>
           <div class="drop-down-cont">
             <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
             <div class="dropdown-content">
               <ul>
-                <li>
+                <li class="logout-btn">
                   <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
                 </li>
               </ul>
@@ -69,13 +66,13 @@
 
       <div class="products-header-cont">
         <input
-            type="text"
-            placeholder="Search"
-            class="search-form form-control"
-          />
-          <button class="btn search-btn">Search</button>
+          type="text"
+          placeholder="Search"
+          class="search-form form-control"
+        />
+        <button class="btn search-btn">Search</button>
       </div>
-      <hr>
+      <hr />
 
       <div class="products-main-container">
         <table class="products-table">
@@ -88,74 +85,156 @@
             <th>Details</th>
           </thead>
           <tbody class="products-table-body">
-            <tr>
-                <td>
-                    <img src="./img/products/milk.png" alt="" width="30" height="30" class="img-fluid">
-                </td>
-                <td>Milk</td>
-                <td>22</td>
+            <!-- <tr>
+              <td>
+                <img
+                  src="./img/products/milk.png"
+                  alt=""
+                  width="30"
+                  height="30"
+                  class="img-fluid"
+                />
+              </td>
+              <td>Milk</td>
+              <td>22</td>
               <td>fgv0e79ji45ty90</td>
               <td>
                 <span class="orgId">22.44.02</span>
               </td>
               <td>
-                <button class="btn products-info-btn product-edit-btn btn-success" data-qrcode-img="https://qrtag.net/api/qr_4.png" data-qrcode-item="milk" data-qrcode-orgId="desff453643"
-                data-product-id="" data-qrcode-hash="435645g45ty45y4ge5436" data-qrcode-price="22">Edit</button>
+                <button
+                  class="btn products-info-btn product-edit-btn btn-success"
+                  data-qrcode-img="https://qrtag.net/api/qr_4.png"
+                  data-qrcode-item="milk"
+                  data-qrcode-orgId="desff453643"
+                  data-product-id=""
+                  data-qrcode-hash="435645g45ty45y4ge5436"
+                  data-qrcode-price="22"
+                >
+                  Edit
+                </button>
 
-                <button class="btn products-info-btn product-delete-btn btn-danger"
-                data-orgId="somerandomid" 
-                data-product-id="bfa91ca6-ee45-4714-9a3a-43e4cc5d178f">Delete</button>
+                <button
+                  class="btn products-info-btn product-delete-btn btn-danger"
+                  data-orgId="somerandomid"
+                  data-product-id="bfa91ca6-ee45-4714-9a3a-43e4cc5d178f"
+                >
+                  Delete
+                </button>
 
                 <div class="edit-product-modal">
-                    <ion-icon name="close" class="close-modal"></ion-icon>
-                    <div class="post-form-cont">
-                        <div class="left">
-                          <div class="head">
-                            <h5>Edit Product</h5>
-                          </div>
-                          <div class="form-cont">
-                            <input type="text" placeholder="Name" class="form-control pName" />
-                
-                            <input
-                              type="number"
-                              placeholder="Price"
-                              class="form-control pPrice"
-                            />
-                            <select class="form-control currencies"></select>
-                          </div>
-                        </div>
-                        <div class="right">
-                            <div class="check-edit-img">
-                                <input type="checkbox" class="edit-image-chk">
-                                edit image
-                            </div>
-                          <button class="btn submit-btn brand-btn-o">Submit</button>
-                        </div>
+                  <ion-icon name="close" class="close-modal"></ion-icon>
+                  <div class="post-form-cont">
+                    <div class="left">
+                      <div class="head">
+                        <h5>Edit Product</h5>
                       </div>
-            
-                      <div class="edit-image-modal" data-product-id="bfa91ca6-ee45-4714-9a3a-43e4cc5d178f" data-qrcode-orgId="somerandomid">
-                        <div class="box">
-                            <ion-icon name="close" class="close-editimage-modal"></ion-icon>
-                              <input type="file" hidden class="imageInp" />
-                              <div class="image-preview">
-                                <img alt="" class="img-fluid product-image-preview" />
-                              </div>
-                              <button class="btn upload visible">
-                                <ion-icon name="cloud-upload-outline" ></ion-icon>
-                                Choose File
-                              </button>
-                              <button class="edit-image-upload-btn btn-primary btn">Upload</button>
-                        </div>
+                      <div class="form-cont">
+                        <input
+                          type="text"
+                          placeholder="Name"
+                          class="form-control pName"
+                        />
+
+                        <input
+                          type="number"
+                          placeholder="Price"
+                          class="form-control pPrice"
+                        />
+                        <select class="form-control currencies"></select>
                       </div>
+                    </div>
+                    <div class="right">
+                      <div class="check-edit-img">
+                        <input type="checkbox" class="edit-image-chk" />
+                        edit image
+                      </div>
+                      <button class="btn submit-btn brand-btn-o">Submit</button>
+                    </div>
+                  </div>
+
+                  <div
+                    class="edit-image-modal"
+                    data-product-id="bfa91ca6-ee45-4714-9a3a-43e4cc5d178f"
+                    data-qrcode-orgId="somerandomid"
+                  >
+                    <div class="box">
+                      <ion-icon
+                        name="close"
+                        class="close-editimage-modal"
+                      ></ion-icon>
+                      <input type="file" hidden class="imageInp" />
+                      <div class="image-preview">
+                        <img alt="" class="img-fluid product-image-preview" />
+                      </div>
+                      <button class="btn upload visible">
+                        <ion-icon name="cloud-upload-outline"></ion-icon>
+                        Choose File
+                      </button>
+                      <button class="edit-image-upload-btn btn-primary btn">
+                        Upload
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
+
+        <div class="edit-product-modal">
+          <ion-icon name="close" class="close-modal"></ion-icon>
+          <div class="post-form-cont">
+            <div class="left">
+              <div class="head">
+                <h5>Edit Product</h5>
+              </div>
+              <div class="form-cont">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  class="form-control pName"
+                />
+
+                <input
+                  type="number"
+                  placeholder="Price"
+                  class="form-control pPrice"
+                />
+                <select class="form-control currencies"></select>
+              </div>
+            </div>
+            <div class="right">
+              <div class="check-edit-img">
+                <input type="checkbox" class="edit-image-chk" />
+                edit image
+              </div>
+              <button class="btn submit-btn brand-btn-o">Submit</button>
+            </div>
+          </div>
+
+          <div
+            class="edit-image-modal"
+            data-product-id="${data.id}"
+            data-product-orgId="${data.orId}"
+          >
+            <div class="box">
+              <ion-icon name="close" class="close-editimage-modal"></ion-icon>
+              <input type="file" hidden class="imageInp" />
+              <div class="image-preview">
+                <img alt="" class="img-fluid product-image-preview" />
+              </div>
+              <button class="btn upload visible">
+                <ion-icon name="cloud-upload-outline"></ion-icon>
+                Choose File
+              </button>
+              <button class="edit-image-upload-btn btn-primary btn">
+                Upload
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      
-
     </div>
 
     <script
@@ -168,10 +247,19 @@
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js"></script>
+    <script src="../assets/js/checkAuth.js"></script>
+    <script src="../assets/js/moment.js"></script>
     <script src="./js/qr.js"></script>
     <script>
+      function check() {
+        if (!isLoggedIn()) {
+          redirect(0, "../login.html");
+        }
+      }
+      check();
+
       NavBarDropDown();
-      PRODUCTS_PAGE()
+      PRODUCTS_PAGE();
     </script>
   </body>
 </html>

@@ -20,13 +20,13 @@
       <div class="main-nav">
         <ul class="list-item">
           <a href="index.html">
-            <li class="">Dashboard</li>
+            <li class="active">Dashboard</li>
           </a>
           <a href="./addProducts.html">
             <li class="">Add Product</li>
           </a>
           <a href="qrcodes.html">
-            <li class="active">Print QRCODES</li>
+            <li class="">Print QRCODES</li>
           </a>
           <a href="products.html">
             <li class="">Manage Products</li>
@@ -43,20 +43,17 @@
       <!-- navbar -->
       <div class="dash-nav">
         <div class="right">
-          <img
+          <!-- <img
             src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
             alt=""
-            class="img-fluid"
-          />
-          <div class="info">
-            <span><b>Tesla Motor</b></span>
-            <small>Chief Manager</small>
-          </div>
+            class="img-fluid org-image"
+          /> -->
+          <div class="info"></div>
           <div class="drop-down-cont">
             <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
             <div class="dropdown-content">
               <ul>
-                <li>
+                <li class="logout-btn">
                   <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
                 </li>
               </ul>
@@ -73,8 +70,8 @@
               <ion-icon name="cart"></ion-icon>
             </div>
             <div class="right">
-              <h5 class="total-product-price">$2,555,84</h5>
-              <small>Total Products</small>
+              <h5 class="total-product-price">$0</h5>
+              <small>Total Purchases</small>
             </div>
           </div>
           <div class="info-card">
@@ -82,8 +79,8 @@
               <ion-icon name="qr-code"></ion-icon>
             </div>
             <div class="right">
-              <h5 class="total-product-price">100</h5>
-              <small>Total Scanned Products</small>
+              <h5 class="total-product-scanned">0</h5>
+              <small>Total Scanned</small>
             </div>
           </div>
           <div class="info-card">
@@ -91,8 +88,8 @@
               <ion-icon name="pricetags"></ion-icon>
             </div>
             <div class="right">
-              <h5 class="total-product-price">1.2k</h5>
-              <small>Total Products</small>
+              <h5 class="total-goods">0</h5>
+              <small>Total Goods</small>
             </div>
           </div>
         </div>
@@ -112,7 +109,7 @@
               <th>Total</th>
               <th>Payment</th>
               <th>Date</th>
-              <th>Details</th>
+              <th>Status</th>
             </thead>
             <tbody>
               <tr>
@@ -122,9 +119,7 @@
                 <td class="payment">Master Card</td>
                 <td>Wed 4, 2021</td>
                 <td>
-                  <button class="btn more-info products-details-btn">
-                    Details
-                  </button>
+                  <button class="btn more-info payment-action">Approve</button>
                 </td>
               </tr>
               <tr>
@@ -134,49 +129,13 @@
                 <td class="payment">Master Card</td>
                 <td>Wed 4, 2021</td>
                 <td>
-                  <button
-                    class="btn more-info products-details-btn"
-                    data-product-id="productid"
-                  >
-                    Details
+                  <button class="btn more-info payment-action approved">
+                    Approved
                   </button>
                 </td>
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-
-      <!-- Products Info -->
-      <div class="products-info-modal">
-        <div class="products-info">
-          <ion-icon name="close" class="close-products-modal"></ion-icon>
-          <div class="top-head">
-            <img
-              src="https://avatars.dicebear.com/api/micah/john%20brains.svg"
-              alt=""
-              class="img-fluid"
-            />
-            <div class="user-details">
-              <h4>John Brains</h4>
-              <span class="type">Customer</span>
-            </div>
-          </div>
-          <div class="middle">
-            <p>Purchased Products</p>
-            <hr />
-          </div>
-          <div class="purchase-products">
-            <div class="purchase-card">
-              <img src="./img/products/milk.png" alt="" class="img-fluid" />
-              <div class="info">
-                <p class="name"><span class="qty">Item Name: </span>Milk</p>
-                <span class="qty"
-                  >Quantity: <span class="qty-num">3</span>
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -194,12 +153,15 @@
     <script src="./js/main.js"></script>
     <script src="../assets/js/checkAuth.js"></script>
     <script>
-      NavBarDropDown();
-      ProductsDetails();
-
-      if (!isLoggedIn()) {
-        redirect(0, "../login.html");
+      function check() {
+        if (!isLoggedIn()) {
+          redirect(0, "../login.html");
+        }
       }
+      check();
+      NavBarDropDown();
+      DASHBOARD_MAIN();
+      ProductsDetails();
     </script>
   </body>
 </html>

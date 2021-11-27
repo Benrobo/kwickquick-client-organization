@@ -224,8 +224,6 @@
     <script src="./assets/js/checkAuth.js"></script>
     <script src="./assets/js/app.js"></script>
     <script>
-      SIDEBAR();
-
       let dashboardList = document.querySelectorAll(".dashboard-list");
       let loginList = $all(".login-list");
 
@@ -248,6 +246,8 @@
           return;
         }
       });
+
+      SIDEBAR();
 
       AOS.init({
         duration: 1200,

@@ -33,7 +33,7 @@
           <a href="products.html">
             <li class="">Manage Products</li>
           </a>
-          <a href="">
+          <a href="settings.html">
             <li class="">Settings / Profile</li>
           </a>
         </ul>
@@ -120,10 +120,9 @@
     <script src="./js/qr.js"></script>
     <script>
       function check() {
-        if (!isLoggedIn() && location.pathname === "/addProducts.html") {
+        if (!isLoggedIn()) {
           redirect(0, "../login.html");
         }
-        return null;
       }
       check();
 

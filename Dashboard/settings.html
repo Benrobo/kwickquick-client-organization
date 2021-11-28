@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Qrcodes Management</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/settings.css" />
+    <script src="./js/sweetalert.js"></script>
+    <link rel="stylesheet" href="./css/sweetalert.css" />
+  </head>
+  <body>
+    <!-- sidebar -->
+
+    <div class="sidebar">
+      <!-- <div class="navbar-container"> -->
+      <div class="top">
+        <img src="../assets/img/logo/logo.png" alt="" class="img-fluid" />
+        <h6>Kwickquick</h6>
+      </div>
+      <div class="main-nav">
+        <ul class="list-item">
+          <a href="index.html">
+            <li class="">Dashboard</li>
+          </a>
+          <a href="./addProducts.html">
+            <li class="">Add Product</li>
+          </a>
+          <a href="qrcodes.html">
+            <li class="">Print QRCODES</li>
+          </a>
+          <a href="products.html">
+            <li class="">Manage Products</li>
+          </a>
+          <a href="settings.html">
+            <li class="active">Settings / Profile</li>
+          </a>
+        </ul>
+      </div>
+      <!-- </div> -->
+    </div>
+    <!-- main-content -->
+    <div class="main-content">
+      <!-- navbar -->
+      <div class="dash-nav">
+        <div class="right">
+          <!-- <img
+            src="https://avatars.dicebear.com/api/initials/tesla%20motor.svg"
+            alt=""
+            class="img-fluid org-image"
+          /> -->
+          <div class="info"></div>
+          <div class="drop-down-cont">
+            <ion-icon name="caret-down" class="dropdown-icon"></ion-icon>
+            <div class="dropdown-content">
+              <ul>
+                <li class="logout-btn">
+                  <ion-icon name="lock-closed"></ion-icon><a href="">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="main-container">
+          <div class="left">
+              <div class="logo-cont">
+                  <img src="../assets/img/logo/logo.png" alt="" class="img-fluid logo-img">
+
+                  <div class="action">
+                      <input type="file" hidden class="org-image-file">
+                    <button class="btn edit-logo">Edit Logo</button>
+                    <button class="btn upload-btn">Upload</button>
+                  </div>
+              </div>
+              <br>
+              <div class="org-qrcode-cont">
+                  <div class="qrcode-cont"></div>
+                  <button class="btn download-qrcode mt-3">Download</button>
+              </div>
+          </div>
+          <div class="right">
+              <div class="top-head">
+                  <div class="credit-card">
+                      
+                  </div>
+                  <button class="btn edit-card-btn">Add Card</button>
+              </div>
+
+              <div class="middle">
+                  <div class="head">
+                    <input type="checkbox" class="check-edit">
+                    Edit Info
+                  </div>
+                  <hr>
+                <form class="org-details editMode">
+                    <h3>Account Details</h3>
+                    <input type="text" placeholder="Organization Name" class="form-control org-inp-name">
+                    <br>
+                    <input type="email" placeholder="Email" class="form-control org-inp-email">
+                    <br>
+                    <input type="number" placeholder="Number" class="form-control org-inp-number">
+                    <br>
+                    <input type="password" placeholder="Password" class="form-control org-inp-pwd">
+                    <br>
+                    <button class="btn save-btn btn-success">Update</button>
+                </form>
+              </div>
+          </div>
+          
+              <!-- edit card modal -->
+              <div class="edit-card-modal">
+                <div class="box2">
+                    <h3>Add Card Details</h3>
+                    <input type="tel" id="cn" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control card-number">
+                    <br>
+                    <input type="text" placeholder="Card Name" class="form-control card-name">
+                    <br>
+                    <button class="btn card-submit-btn">Update</button>
+                </div>
+            </div>
+      </div>
+
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="../assets/js/checkAuth.js"></script>
+    <script src="../assets/js/moment.js"></script>
+    <script src="./js/qr.js"></script>
+    <script>
+      function check() {
+        if (!isLoggedIn()) {
+          redirect(0, "../login.html");
+        }
+      }
+      check();
+
+      NavBarDropDown();
+      SETTINGS()
+    </script>
+  </body>
+</html>

@@ -6,6 +6,10 @@ const $all = (elm) => {
     return document.querySelectorAll(elm)
 }
 
+const createNode = (elm)=>{
+    return document.createElement(elm)
+}
+
 function redirect(time, path) {
     setTimeout(() => {
         location = path
@@ -45,6 +49,17 @@ async function request(api, data, method, headers) {
 
     let res = await req.json()
     return { req, res };
+}
+
+function generateQrcode(elm, text) {
+    return new QRCode(elm, {
+        text: text,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
 }
 
 // navbar
@@ -90,12 +105,18 @@ const DASHBOARD_MAIN = () => {
             if (req.status === 200) {
                 totalGoods.innerHTML = res.length;
             }
+
+            
         } catch (e) {
             alert.error("Something went wrong fetching details")
         }
     }
 
     getProducts()
+
+    function calculateTotalPurchased(){
+        
+    }
 }
 
 // products
@@ -438,16 +459,7 @@ const QRCODE_PAGE = () => {
         }
     }
 
-    function generateQrcode(elm, text) {
-        return new QRCode(elm, {
-            text: text,
-            width: 200,
-            height: 200,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-    }
+    
 }
 
 
@@ -848,4 +860,117 @@ const PRODUCTS_PAGE = () => {
 
 }
 
+// SETTINGS PAGE
+const SETTINGS = ()=>{
+    let logoFile = $(".org-image-file");
+    let imgPreview = $(".logo-img");
+    let uploadBtn = $(".upload-btn");
+    let changeBtn = $(".edit-logo");
+    let qrcodeCont = $(".qrcode-cont");
+    let downloadBtn = $(".download-qrcode");
+    let cardDetails = $(".credit-card");
+    let editCardBtn = $(".edit-card-btn");
+    let editCardModal = $(".edit-card-modal");
+    let cardNumberInp = $(".card-number");
+    let cardNameInp = $(".card-name");
+    let cardSubmitBtn = $(".card-submit-btn")
+    let checkBox = $(".check-edit");
+    let orgNameInp = $(".org-inp-name")
+    let orgEmailInp = $(".org-inp-email")
+    let orgNumberInp = $(".org-inp-number")
+    let orgPwdInp = $(".org-inp-pwd")
+    let updateBtn = $(".save-btn")
+    let orgFormDetails = $(".org-details")
+    let loading = false;
+
+    let { refreshToken, org } = getOrgInfo();
+
+
+    // togle form active mode
+    checkBox.onclick = (e)=>{
+        let chk = e.target.checked
+        if(chk){
+            orgFormDetails.classList.remove("editMode")
+        }else{
+            orgFormDetails.classList.add("editMode")
+        }
+    }
+
+    // download qrcode
+    downloadBtn.onclick = (e)=>{
+        let target = e.target;
+        let imgSrc = target.parentElement.querySelector("img").src
+        let a = createNode("a");
+        a.href = imgSrc;
+        a.download = "org-qrcode"
+        a.click()
+    }
+
+    // get data
+    const getOrgData = async ()=>{
+        loading = true;
+
+        let api = "http://localhost:5000/kwickquick/api/all/getOrganizations"
+        let {req, res} = await request(api, {orId: org.id}, "post", {
+            "content-type": "application/json",
+            "authorization": `Bearer ${refreshToken}`
+        })
+
+        let orgQrcodeHash = `${res[0].orgHash}`
+
+        generateQrcode(qrcodeCont, orgQrcodeHash)
+    
+        populate(req, res)
+    }
+
+    getOrgData()
+
+    function populate(req,res){
+        let data = res[0]
+        console.log(data)
+        // img preview
+        imgPreview.src = data.orLogo;
+        
+        // card details
+        cardDetails.innerHTML = `
+            <h4 class="card-num">${data.cardNumber === null ? "xxxx xxxx xxxx" : cardNumber}</h4>
+            <br>
+            <p>${data.cardName === null ? "Card Name" : cardName}</p>
+        `
+
+        // populate form fields
+        orgNameInp.value = data.orName
+        orgEmailInp.value = data.orMail
+        orgNumberInp.value = data.orNumber
+        orgPwdInp.value = "1234";
+
+    }
+
+    // ewdit card details
+    editCardBtn.onclick = ()=>{
+        editCardModal.style.display = "flex"
+    }
+
+    editCardModal.onclick = (e)=>{
+        if(!e.target.classList.contains("box2")){
+            editCardModal.style.display = "none"
+        }
+    }
+
+    // updated card info
+    cardSubmitBtn.onclick = async ()=>{
+        if(cardNumberInp.value === "" || cardNameInp.value === ""){
+            return alert.error("Fields cant be empty")
+        }
+        else{
+           await sendData(cardNumberInp.value, cardNameInp.value)
+        }
+    }
+
+    // send data
+    async function sendData(cNum, cName){
+        alert.error("Feature would be implemented soon")
+    }
+
+}
 

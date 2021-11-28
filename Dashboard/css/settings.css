@@ -1,0 +1,154 @@
+@import url("./style.css");
+
+.main-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 0px;
+}
+
+.main-container .left {
+  width: 30%;
+  background: var(--dark3);
+  padding: 0px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  /* justify-content:center; */
+  flex-direction: column;
+}
+
+.main-container .left .logo-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.main-container .left .logo-cont img {
+  width: 80px;
+  border-radius: 12px;
+}
+
+.main-container .left .logo-cont .action .btn {
+  padding: 10px;
+  transform: scale(0.75);
+  font-weight: 900;
+}
+.main-container .left .logo-cont .action .edit-logo {
+  background: var(--y);
+}
+.main-container .left .logo-cont .action .upload-btn {
+  background: var(--light2);
+  display: none;
+}
+
+.main-container .left .org-qrcode-cont {
+  width: 100%;
+  height: 300px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.main-container .left .org-qrcode-cont .qrcode-cont {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-container .right {
+  width: 70%;
+  padding: 20px;
+  background: var(--dark2);
+  height: 100vh;
+  position: relative;
+}
+
+.main-container .right .top-head {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.main-container .right .top-head .credit-card {
+  width: 300px;
+  height: 150px;
+  background: #000;
+  border-radius: 20px;
+  padding: 12px;
+  margin-right: 10px;
+}
+
+.main-container .right .top-head .edit-card-btn {
+  padding: 10px;
+  transform: scale(0.75);
+  font-weight: 900;
+  background: var(--y);
+}
+
+.main-container .right .middle {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.main-container .right .middle .head {
+  color: var(--light);
+}
+.main-container .right .middle form {
+  width: 100%;
+  color: var(--light);
+}
+.main-container .right .middle form input {
+  background: var(---dark3);
+  border: 2px solid var(--y);
+}
+.main-container .right .middle form.editMode {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.main-container .edit-card-modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: var(--dark2);
+  transition: 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  z-index: 100;
+  display: none;
+}
+
+.main-container .edit-card-modal .box2{
+    width: 300px;
+    height: 250px;
+    background: var(--dark3);
+    padding: 12px;
+    font-size: 20px;
+}
+.main-container .edit-card-modal .box2 .btn{
+    background: var(--y);
+    width: 100%;
+}

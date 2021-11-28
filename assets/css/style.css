@@ -122,6 +122,14 @@ body {
   padding: 5px;
 }
 
+.navbar .main-nav ul li.dashboard-list {
+  display: none;
+}
+
+.navbar .main-nav ul li a .signup-btn {
+  display: none;
+}
+
 .burger-cont {
   position: absolute;
   right: 20px;
@@ -202,6 +210,13 @@ body {
 
 .navbar .sidebar-nav ul li {
   line-height: 50px;
+}
+
+.navbar .sidebar-nav ul li .dashboard-list {
+  display: none;
+}
+.navbar .sidebar-nav ul li a .signup-btn {
+  display: none;
 }
 
 /* Header */
@@ -407,39 +422,12 @@ body {
 }
 
 .section .reviews-cont .body {
+  width: 60%;
   display: flex;
   align-items: center;
-  justify-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.section .reviews-cont .body .review-card {
-  width: 300px;
-  height: 200px;
-  display: flex;
-  align-items: flex-start;
   justify-items: center;
   flex-direction: column;
-  box-shadow: 0px 0px 10px var(--dark3);
-  position: relative;
-  border-radius: 10px;
-}
-
-.section .reviews-cont .body .review-card .body {
-  position: absolute;
-  bottom: 0px;
-  padding: 20px;
-  font-size: 15px;
-}
-.section .reviews-cont .body .review-card .body .star-rating {
-  display: flex;
-  color: var(--y);
-  align-items: center;
-  justify-items: center;
-}
-.section .reviews-cont .body .review-card .body .star-rating ion-icon {
-  padding: 10px;
+  flex-wrap: wrap;
 }
 
 /* Started cont */

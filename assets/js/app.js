@@ -151,7 +151,7 @@ const LOGIN = () => {
             try {
                 // send form data
                 loading = true;
-                submitBtn.innerHTML = "Signing up...."
+                submitBtn.innerHTML = "Loging you...."
                 let data = {
                     email: emailInp.value,
                     password: pwdInp.value,
@@ -164,18 +164,20 @@ const LOGIN = () => {
 
                 if (req.status === 200) {
                     loading = false;
-                    submitBtn.innerHTML = "Sign up"
+                    submitBtn.innerHTML = "Login"
                     alert.success(res.message)
                     saveToLocalStorage(res)
                     return redirect(1000, "/Dashboard")
                 }
                 else {
                     loading = false;
-                    submitBtn.innerHTML = "Sign up"
+                    submitBtn.innerHTML = "Login"
                     alert.error(res.message)
                 }
             } catch (e) {
-                alert.success("Something went wrong, please try later")
+                loading = false;
+                submitBtn.innerHTML = "Login"
+                alert.error("Something went wrong, please try later")
             }
         }
 

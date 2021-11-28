@@ -34,7 +34,7 @@
             </li>
             <li>
               <a href="signup.html">
-                <button class="btn barnd-btn-f">Signup</button>
+                <button class="btn barnd-btn-f signup btn">Signup</button>
               </a>
             </li>
           </ul>
@@ -59,7 +59,7 @@
             </li>
             <li>
               <a href="signup.html">
-                <button class="btn barnd-btn-f">Signup</button>
+                <button class="btn barnd-btn-f signup-btn">Signup</button>
               </a>
             </li>
           </ul>
@@ -177,18 +177,13 @@
       <!-- Reviews -->
       <div class="reviews-cont">
         <div class="top">
-          <h2>Reviews</h2>
+          <h2>Preview</h2>
         </div>
         <div class="body">
-          <div class="review-card">
-            <div class="top">
-              <div class="company-name">Tesla Motor</div>
-            </div>
-            <div class="body">
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="star-rating">5 <ion-icon name="star"></ion-icon></div>
-            </div>
-          </div>
+          <p>Scanner App</p>
+          <img src="./scanner.png" alt="" class="img-fluid" />
+          <p>Organization Dashboard</p>
+          <img src="./dashboard.png" alt="" class="img-fluid" />
         </div>
       </div>
       <!-- Get started -->
@@ -226,6 +221,9 @@
     <script>
       let dashboardList = document.querySelectorAll(".dashboard-list");
       let loginList = $all(".login-list");
+      let signupBtn = $all("signup-btn");
+
+      console.log(isLoggedIn);
 
       dashboardList.forEach((list) => {
         if (!isLoggedIn) {
@@ -243,6 +241,16 @@
           return;
         } else {
           list.style.display = "none";
+          return;
+        }
+      });
+
+      signupBtn.forEach((btn) => {
+        if (!isLoggedIn) {
+          btn.style.display = "block";
+          return;
+        } else {
+          btn.style.display = "none";
           return;
         }
       });

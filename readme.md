@@ -6,7 +6,11 @@ and the Scanner App [kwickquick-scanner](https://github.com/Benrobo/kwickquick-c
 
 ### The organization dashboard
 
+<img src="https://github.com/Benrobo/kwickquick-client-organization/blob/main/dashboard.png?raw=true">
 
+### The Scanner
+
+<img src="https://github.com/Benrobo/kwickquick-client-organization/blob/main/scanner.png?raw=true">
 
 ## ❤❤ Contributing
 

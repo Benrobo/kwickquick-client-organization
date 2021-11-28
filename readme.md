@@ -2,6 +2,10 @@
 
 
 You can view the [kwickquick-API](https://github.com/Benrobo/kwickquick-API)
+and the Scanner App [kwickquick-scanner](https://github.com/Benrobo/kwickquick-client-scanner)
+
+### The organization dashboard
+
 
 
 ## ❤❤ Contributing
